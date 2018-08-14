@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Sidebar from './components/Sidebar';
+import Sidebar from './components/Sidebar'
+import Map from './components/Map'
 
 // import './App.css'
 import './styles/styles.css'
@@ -9,9 +10,7 @@ class App extends Component {
     return (
       <div id="container">
         <Sidebar />
-        <div id="content" className="App-header">
-          
-        </div>
+        <Map />
       </div>
     );
   }

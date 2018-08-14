@@ -19,7 +19,7 @@ class Sidebar extends Component {
             </li>
           <li>
             <a>
-              <i class="material-icons">message</i>
+              <i className="material-icons">message</i>
             </a>
           </li>
         </ul >
