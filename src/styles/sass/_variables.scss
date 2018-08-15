@@ -1,6 +1,8 @@
+@import url(https://fonts.googleapis.com/css?family=Cabin:400);
 // colors
 $darker: #2D2E2E;
-
+$pale-white: rgb(214, 200, 200);
+$input-field: #888;
 // sizes
 
 $break-tiny: 320px;
@@ -8,3 +10,6 @@ $break-small: 411px;
 $break-medium: 600px;
 $break-large: 900px;
 $break-larger: 1200px;
+
+
+$font-cabin: 'Cabin', helvetica, arial, sans-serif;

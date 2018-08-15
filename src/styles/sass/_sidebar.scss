@@ -4,26 +4,105 @@ nav {
   padding-top: 20px;
   .logo {
     display: block;
-    width: 40px;
+    width: 80px;
     margin: auto;
   }
-
   ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-
     li {
-
       a {
-        color: #fff;
+        color: $pale-white;
         padding: 20px;
         display: block;
       }
+    }
+  }
+}
 
-      .activated {
-        background-color: #00a8ff;
-      }
+.hidden {
+  width: 0px;
+}
+
+.search-area {
+  @media screen and (max-width: 1290px){
+    display: none;
+  }
+  text-align: center;
+
+  .search-box {
+    margin: 2em auto;
+    position: relative;
+    width: 100%;
+
+    form {
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    input {
+      background: #222;
+      background: linear-gradient(#333, #222);
+      border: 1px solid #444;
+      border-radius: 5px 0 0 5px;
+      color: $input-field;
+      display: block;
+      float: left;
+      font-family: $font-cabin;
+      font-size: 12px;
+      font-weight: 400;
+      height: 40px;
+      margin: 0;
+      padding: 0 10px;
+      width: 158px;
+    }
+
+    input::-webkit-input-placeholder {
+      color: $input-field;
+    }
+
+    input:-moz-placeholder {
+      color: $input-field;
+    }
+
+    input:focus {
+      background: #222922;
+      background: linear-gradient(#333933, #222922);
+      border-color: rgb(36, 156, 170);
+      color: #efe;
+      outline: none;
+    }
+
+    button {
+      background: #222;
+      background: linear-gradient(#333, #222);
+      box-sizing: border-box;
+      border: 1px solid #444;
+      border-left-color: #000;
+      border-radius: 0 5px 5px 0;
+      display: block;
+      font-family: $font-cabin;
+      font-size: 10px;
+      font-weight: 400;
+      height: 40px; // line-height: 40px;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      width: 35px;
+    }
+
+    :hover, :focus {
+      background: #292929;
+      background: linear-gradient(#393939, #292929);
+      color: rgb(30, 151, 185);
+      outline: none;
+    }
+
+    :active {
+      background: #292929;
+      background: linear-gradient(#393939, #292929);
+      top: 1px;
     }
   }
 }

@@ -9,7 +9,8 @@ class TitleBar extends Component {
   render() {
     return (
       <div className="title-bar">
-        <MaterialIcon icon="message" invert size='medium' className='toggle-nav-btn' />
+        <MaterialIcon icon="menu" invert size='medium' className='toggle-nav-btn' />
+        
       </div>
     );
   }

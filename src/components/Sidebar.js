@@ -8,6 +8,14 @@ class Sidebar extends Component {
     return (
       <nav>
         <img id="logo" className="logo" src={logo} alt="logo" />
+        <div className='search-area'>
+          <section class="search-box">
+            <form action="" method="">
+              <input type="search" placeholder="Find workspace .."></input>
+              <button><MaterialIcon icon="location_on" invert/></button>
+            </form>
+          </section>
+        </div>
         <ul>
           <li>
             <a>
@@ -16,14 +24,14 @@ class Sidebar extends Component {
           </li>
           <li>
             <a><MaterialIcon icon="alarm_on" invert /></a>
-            </li>
+          </li>
           <li>
             <a>
               <i className="material-icons">message</i>
             </a>
           </li>
         </ul >
-      </nav >
+      </nav>
     );
   }
 }
