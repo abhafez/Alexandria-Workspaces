@@ -6,23 +6,24 @@
   grid-template-columns: 20% 1fr;
   grid-template-rows: 20% 1fr;
   height: 100%;
+  transition: 2s;
   #content {
     padding: 30px 50px;
   }
 }
 
-#container > header {
+header {
   grid-area: hd;
   // background-color: #8ca0ff;
 }
 
-#container > nav {
+nav {
   grid-area: nav;
+  transition: all 1s;
   // background-color: #8ca0ff;
 }
 
-#container > main {
+main {
   grid-area: main;
-  // background-color: #8ca0ff;
 }
 
