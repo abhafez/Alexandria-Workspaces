@@ -37,8 +37,11 @@ nav ul li .activated {
 #container {
   display: -ms-grid;
   display: grid;
+      grid-template-areas: "nav hd" "nav  main" "nav  foot";
   -ms-grid-columns: 20% 1fr;
       grid-template-columns: 20% 1fr;
+  -ms-grid-rows: 20% 1fr;
+      grid-template-rows: 20% 1fr;
   height: 100%;
 }
 
@@ -46,36 +49,32 @@ nav ul li .activated {
   padding: 30px 50px;
 }
 
-#container #content ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+#container > header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: hd;
 }
 
-#container #content ul li {
-  background: #FFF;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 8px;
+#container > nav {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+  grid-area: nav;
 }
 
-#container #content ul li a {
-  font-size: 1.5em;
-  text-decoration: none;
-  font-weight: bold;
-  color: #00A8FF;
+#container > main {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: main;
 }
 
-#container #content ul li ul {
-  margin-top: 20px;
+.title-bar {
+  background: #3a3b3b;
+  height: 4em;
 }
 
-#container #content ul li ul li {
-  padding: 0;
-}
-
-#container #content ul li ul li a {
-  font-size: 1em;
-  font-weight: 300;
+.title-bar i {
+  margin-top: 0.3em;
+  margin-left: 0.5em;
 }
 /*# sourceMappingURL=styles.css.map */
