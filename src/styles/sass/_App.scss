@@ -1,8 +1,8 @@
 #container {
   display: grid;
   grid-template-areas: "nav hd"
-                       "nav  main"
-                       "nav  foot";
+                       "nav  main";
+                      //  "nav  main";
   grid-template-columns: 20% 1fr;
   grid-template-rows: 20% 1fr;
   height: 100%;
@@ -14,16 +14,18 @@
 
 header {
   grid-area: hd;
-  // background-color: #8ca0ff;
 }
 
 nav {
   grid-area: nav;
   transition: all 1s;
-  // background-color: #8ca0ff;
 }
 
 main {
   grid-area: main;
 }
 
+#map {
+  height: 80vh;
+  width: 100%;
+}

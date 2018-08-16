@@ -74,16 +74,22 @@ nav {
       padding: 0 10px;
       width: 158px;
       transition: width;
-      transition-duration: 1s;
+      transition-duration: 0.3s;
       @media screen and (max-width: 1230px){
         border-radius: 5px 5px 5px 5px;
         width: 130px;
       }
+      @media screen and (max-width: 842px){
+        width: 90px;
+      }
       @media screen and (max-width: 650px){
         width: 90px;
       }
+      @media screen and (max-width: 600px){
+        width: 70px;
+      }
       @media screen and (max-width: 400px){
-        width: 60px;
+        width: 50px;
       }
     }
 

@@ -5,17 +5,19 @@ class TitleBar extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.activateLasers = this.activateLasers.bind(this);
+    this.hideNavBar = this.hideNavBar.bind(this);
   }
 
-  activateLasers() {
+  hideNavBar() {
     let menu = document.getElementById('sidebar');
     menu.classList.toggle('hidden');
     let menuItems = document.querySelectorAll('.sidebar-element')
     menuItems.forEach((el) => {
       // console.log(el.classList)
       // el.classList.toggle('hideItem')
-      el.style.display === 'none' ? el.style.display = 'block': el.style.display = 'none'
+      el.style.display === 'none' ?
+      el.style.display = 'block':
+      el.style.display = 'none'
     })
     let gridView = document.getElementById('container')
     gridView.style['grid-template-columns'] === '0% 1fr' ?
@@ -25,14 +27,14 @@ class TitleBar extends Component {
   render() {
     return (
       <div className="title-bar">
-        <span id='toggler' onClick={this.activateLasers}>
+        <span id='toggler' onClick={this.hideNavBar}>
           <MaterialIcon
             icon="menu"
             invert
             size='medium'
             className='toggle-nav-btn'
-            onClick={this.activateLasers}
-             />
+            onClick={this.hideNavBar}
+          />
         </span>
       </div>
     );

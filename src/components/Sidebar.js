@@ -6,13 +6,13 @@ import '../styles/styles.css'
 class Sidebar extends Component {
   render() {
     return (
-      <nav id='sidebar' className=''>
+      <nav id='sidebar'>
         <img id="logo" className="logo sidebar-element" src={logo} alt="workspaces in Alex" />
         <div className='search-area sidebar-element'>
           <section className="search-box">
             <form action="" method="">
               <input type="search" placeholder="Find workspace .."></input>
-              <button><MaterialIcon icon="location_on" invert/></button>
+              <button><MaterialIcon icon="location_on" invert /></button>
             </form>
           </section>
         </div>
