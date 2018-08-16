@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <div id="container">
         <ul>
-          {Object.keys(elem).map((i) => <li key={i}>{i}</li>)}
+          {/* {elem.map((i) => <li key={i}>{i}</li>)} */}
         </ul>
         <TitleBar />
         <Sidebar />
