@@ -45,6 +45,8 @@ export class MapContainer extends Component {
         {this.props.workspaces.map((location) => (
           <Marker
             onClick={this.onMarkerClick}
+            animation={(this.activeMarker === location.title)
+              && this.props.google.maps.Animation.BOUNCE}
             title={'The marker`s title will appear as a tooltip.'}
             name={location.name}
             phone={location.phone}

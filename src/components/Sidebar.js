@@ -7,7 +7,8 @@ import escapeRegExp from "escape-string-regexp";
 class Sidebar extends Component {
   state = {
     query: '',
-    selected: ''
+    selected: '',
+    clicked: ''
   }
 
   updateQuery = (query) => {
@@ -53,6 +54,7 @@ class Sidebar extends Component {
             </form>
           </section>
         </div>
+        <p></p>
         <ul className='sidebar-element'>
           {shownWorkspaces.map((workspace) => (
             <li key={workspace.id}

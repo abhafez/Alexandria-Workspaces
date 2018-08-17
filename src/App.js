@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   render() {
-    const { workspacess, selectedWorkspace } = this.state
+    const { workspaces, selectedWorkspace } = this.state
     return (
       <div id="container">
         <TitleBar />

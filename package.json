@@ -93,6 +93,10 @@
   "devDependencies": {
     "css-loader": "^0.28.7",
     "google-map-react": "^1.0.6",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.0.1",
     "material-icons-react": "^1.0.2",
     "node-sass": "^4.9.3",
     "react-controllables": "^0.6.0",
