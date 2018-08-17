@@ -13,15 +13,12 @@ class TitleBar extends Component {
   }
 
   componentDidMount() {
-
     window.onload = this.sideBarVisibility;
-
-    //  this function can should be refactored because it looks
     window.addEventListener('resize', this.sideBarVisibility)
   }
 
   sideBarVisibility() {
-    if (this.state.hiddenByClick !== true &&
+    if (
       window.innerWidth <= 770 &&
       !document.getElementById('sidebar').classList.contains('hidden')) {
       return this.toggleBarVisibility()
@@ -50,19 +47,17 @@ class TitleBar extends Component {
 
   hideShowMenu() {
     this.toggleBarVisibility()
-    console.log("ehhh")
     this.setState(prevState => ({ hiddenByClick: !prevState.hiddenByClick }))
   }
   render() {
     return (
       <div className="title-bar">
-        <span id='toggler' onClick={this.toggleBarVisibility}>
+        <span id='toggler' onClick={this.hideShowMenu}>
           <MaterialIcon
             icon="menu"
             invert
             size='medium'
             className='toggle-nav-btn'
-            onClick={this.hideShowMenu}
           />
         </span>
       </div>
