@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
     this.state = {
       workspaces: workspaces,
-      selectedWorkspace: []
+      selectedWorkspace: [{id: 0}]
     }
   }
 
@@ -30,7 +30,7 @@ class App extends Component {
         />
         <Maps
           workspaces = {workspaces}
-          selectedWorkspace = {selectedWorkspace[0]}
+          selectedWorkspace = {selectedWorkspace}
         />
       </div>
     );

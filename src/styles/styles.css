@@ -208,6 +208,7 @@ h2 {
 #container {
   display: grid;
   grid-template-areas: "nav hd" "nav  main";
+  /* //  "nav  main"; */
   grid-template-columns: 20% 1fr;
   grid-template-rows: 20% 1fr;
   height: 100%;

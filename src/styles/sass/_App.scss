@@ -2,7 +2,7 @@
   display: grid;
   grid-template-areas: "nav hd"
                        "nav  main";
-                      //  "nav  main";
+                       "nav  main";
   grid-template-columns: 20% 1fr;
   grid-template-rows: 20% 1fr;
   height: 100%;
@@ -23,9 +23,4 @@ nav {
 
 main {
   grid-area: main;
-}
-
-#map {
-  height: 80vh;
-  width: 100%;
 }

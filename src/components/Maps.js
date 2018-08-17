@@ -26,6 +26,7 @@ export class MapContainer extends Component {
   };
 
   render() {
+    console.log(this.props.selectedWorkspace)
     const style = {
       width: '100%',
       height: '100%'
@@ -45,7 +46,7 @@ export class MapContainer extends Component {
         {this.props.workspaces.map((location) => (
           <Marker
             onClick={this.onMarkerClick}
-            animation={(this.activeMarker === location.title)
+            animation={(this.props.selectedWorkspace[0]['id'] === location.id)
               && this.props.google.maps.Animation.BOUNCE}
             title={'The marker`s title will appear as a tooltip.'}
             name={location.name}
@@ -76,23 +77,6 @@ export class MapContainer extends Component {
     )
   }
 }
-
-// {this.props.workspaces.map((location) => (
-//   <div>
-//     <Marker
-//       onClick={this.onMarkerClick}
-//       title={'The marker`s title will appear as a tooltip.'}
-//       name={location.name}
-//       position={{ lat: location.lat, lng: location.lng }} />
-//     <InfoWindow
-//       marker={this.state.activeMarker}
-//       visible={this.state.showingInfoWindow}>
-//       <div>
-//         <p>{this.state.selectedPlace.name}</p>
-//       </div>
-//     </InfoWindow>
-//   </div>
-// ))}
 
 export default GoogleApiWrapper({
   apiKey: ('AIzaSyAHU00QUEXigecU9sB3QrG1hl7kfT97lXg')
