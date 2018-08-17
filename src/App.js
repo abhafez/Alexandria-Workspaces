@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import TitleBar from './components/TitleBar'
 import Sidebar from './components/Sidebar'
-import Map from './components/Map'
+import Maps from './components/Maps'
 import './styles/styles.css'
 import workspaces from './workspaces.json'
 
@@ -28,7 +28,7 @@ class App extends Component {
           workspaces={workspaces}
           onSelection={this.selectWorkspace}
         />
-        <Map
+        <Maps
           workspaces = {workspaces}
           selectedWorkspace = {selectedWorkspace[0]}
         />
