@@ -9,23 +9,25 @@ import workspaces from './workspaces.json'
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      workspaces: workspaces,
+      selectedId: ''
+    }
   }
 
-  componentDidMount() {
+  selectWorkspace = (selcetedItem) => {
+    this.setState({selectedId: this.state.workspaces.filter((el) => el.id === selcetedItem)})
   }
 
   render() {
-    const elem = workspaces
-    console.log(elem)
     return (
       <div id="container">
-        <ul>
-          {/* {elem.map((i) => <li key={i}>{i}</li>)} */}
-        </ul>
         <TitleBar />
-        <Sidebar />
-        <Map />
+        <Sidebar
+        workspaces={this.state.workspaces}
+        onSelection={this.selectWorkspace}
+        />
+        <Map/>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "Blooms Coworking Space",
     "address": "Amin Yehia, San Stifano, Qism El-Raml",
     "lat": 31.24255682466093,
@@ -9,6 +10,7 @@
     "image": "./images/workspaces/blooms.jpg"
   },
   {
+    "id": 2,
     "name": "M3mal",
     "address": "Loran، 16 Ibrahim Naseer, Qism El-Raml",
     "lat": 31.2465467,
@@ -18,6 +20,7 @@
     "image": "./images/workspaces/m3ml.jpg"
   },
   {
+    "id": 3,
     "name": "EDZone Co-working Space",
     "address": "11 Abd Al Rahman Al Naseri, Abu an Nawatir, Qism Sidi Gabir",
     "lat": 31.22514139999999,
@@ -27,6 +30,7 @@
     "image": "./images/workspaces/edzone.jpg"
   },
   {
+    "id": 4,
     "name": "Workstation Coworking Space",
     "address": "El-Fardous, Ezbet Saad, Qism Sidi Gabir",
     "lat": 31.2093754,
@@ -36,11 +40,13 @@
     "image": "./images/workspaces/workstation.jpg"
   },
   {
+    "id": 5,
     "name": "Balance Co Working Space",
     "address": "28 Taghour, Al Azaritah WA Ash Shatebi, Qesm Bab Sharqi",
     "lat": 31.2044349,
     "lng": 29.907819399999994,
     "phone": "0101 193 9355",
+    "page": "",
     "image": "./images/workspaces/balance.jpg"
   }
 ]

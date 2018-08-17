@@ -3,7 +3,7 @@
 body {
   margin: 0;
   background: #F2F2F2;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   height: 100vh;
 }
 
@@ -52,10 +52,14 @@ nav ul .hidden {
   display: none;
 }
 
-nav ul li a {
+nav ul li {
   color: #d6c8c8;
-  padding: 20px;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  margin-left: 15px;
+  font-weight: bold;
   display: block;
+  text-decoration: none;
 }
 
 .hidden {
@@ -173,7 +177,8 @@ nav ul li a {
   }
 }
 
-.search-area .search-box :hover, .search-area .search-box :focus {
+.search-area .search-box :hover,
+.search-area .search-box :focus {
   background: #292929;
   background: -webkit-gradient(linear, left top, left bottom, from(#393939), to(#292929));
   background: linear-gradient(#393939, #292929);
