@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import MaterialIcon from 'material-icons-react'
-import logo from '../images/logo1.svg'
+import logo from '../images/logo.png'
 import '../styles/styles.css'
 import escapeRegExp from "escape-string-regexp";
 
@@ -15,7 +15,7 @@ class Sidebar extends Component {
   }
 
   clearQuery = () => {
-    this.setState({query: ''})
+    this.setState({ query: '' })
   }
 
   assignSelected = (clicked) => {
@@ -38,13 +38,14 @@ class Sidebar extends Component {
     return (
       <nav id='sidebar'>
         <img id="logo" className="logo sidebar-element" src={logo} alt="workspaces in Alex" />
+        <p className="slogan">Find your workspace & get out of your comfort zone</p>
         <div className='search-area sidebar-element'>
           <section className="search-box">
             <form>
               <input
-              type="search"
-              placeholder="Find workspace .."
-              onChange={(event) => this.updateQuery(event.target.value)}>
+                type="search"
+                placeholder="Find workspace .."
+                onChange={(event) => this.updateQuery(event.target.value)}>
               </input>
               <button><MaterialIcon icon="location_on" invert /></button>
             </form>
@@ -53,14 +54,13 @@ class Sidebar extends Component {
         <ul className='sidebar-element'>
           {shownWorkspaces.map((workspace) => (
             <li key={workspace.id}
-            onClick={(event) => {
-              (() => this.props.onSelection(workspace.id))
-              (this.assignSelected(workspace.id))
+              className=''
+              onClick={(event) => {
+                (() => this.props.onSelection(workspace.id))
+                (this.assignSelected(workspace.id))
+                event.target.classList.toggle('selected')
               }}
-              // onClick={
-              //   // () =>   console.log(workspace.id)
-              // }
-              >
+            >
               {workspace.name}
             </li>
           ))}

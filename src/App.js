@@ -11,23 +11,27 @@ class App extends Component {
     super(props);
     this.state = {
       workspaces: workspaces,
-      selectedId: ''
+      selectedWorkspace: []
     }
   }
 
   selectWorkspace = (selcetedItem) => {
-    this.setState({selectedId: this.state.workspaces.filter((el) => el.id === selcetedItem)})
+    this.setState({ selectedWorkspace: this.state.workspaces.filter((el) => el.id === selcetedItem) })
   }
 
   render() {
+    const { workspacess, selectedWorkspace } = this.state
     return (
       <div id="container">
         <TitleBar />
         <Sidebar
-        workspaces={this.state.workspaces}
-        onSelection={this.selectWorkspace}
+          workspaces={workspaces}
+          onSelection={this.selectWorkspace}
         />
-        <Map/>
+        <Map
+          workspaces = {workspaces}
+          selectedWorkspace = {selectedWorkspace[0]}
+        />
       </div>
     );
   }

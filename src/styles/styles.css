@@ -15,7 +15,7 @@ nav {
 
 nav .logo {
   display: block;
-  width: 130px;
+  width: 250px;
   margin: auto;
   -webkit-transition: width;
   transition: width;
@@ -26,19 +26,25 @@ nav .logo {
 @media screen and (max-width: 1230px) {
   nav .logo {
     border-radius: 5px 5px 5px 5px;
-    width: 110px;
+    width: 210px;
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 970px) {
+  nav .logo {
+    width: 160px;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  nav .logo {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 500px) {
   nav .logo {
     width: 80px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  nav .logo {
-    width: 60px;
   }
 }
 
@@ -60,6 +66,10 @@ nav ul li {
   font-weight: bold;
   display: block;
   text-decoration: none;
+}
+
+nav ul li .selected {
+  background-color: black;
 }
 
 .hidden {
@@ -195,6 +205,14 @@ nav ul li {
 
 .hideItem {
   display: none;
+}
+
+.slogan {
+  font-family: "Cabin", helvetica, arial, sans-serif;
+  color: #d6c8c8;
+  text-align: center;
+  margin: 0;
+  font-weight: bold;
 }
 
 #container {

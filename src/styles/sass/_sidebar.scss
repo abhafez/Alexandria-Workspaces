@@ -4,19 +4,22 @@ nav {
   padding-top: 20px;
   .logo {
     display: block;
-    width: 130px;
+    width: 250px;
     margin: auto;
     transition: width;
     transition-duration: 0.7s;
     @media screen and (max-width: 1230px) {
       border-radius: 5px 5px 5px 5px;
-      width: 110px;
+      width: 210px;
     }
-    @media screen and (max-width: 650px) {
+    @media screen and (max-width: 970px) {
+      width: 160px;
+    }
+    @media screen and (max-width: 730px) {
+      width: 100px;
+    }
+    @media screen and (max-width: 500px) {
       width: 80px;
-    }
-    @media screen and (max-width: 400px) {
-      width: 60px;
     }
   }
   ul {
@@ -34,6 +37,9 @@ nav {
       font-weight: bold;
       display: block;
       text-decoration: none;
+      .selected {
+        background-color: darken($darker, 30%)
+      }
     }
   }
 }
@@ -136,4 +142,12 @@ nav {
 
 .hideItem {
   display: none;
+}
+
+.slogan {
+  font-family: $font-cabin;
+  color: $pale-white;
+  text-align: center;
+  margin: 0;
+  font-weight: bold;
 }
