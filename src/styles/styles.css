@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Cabin:400);
+@import url("https://fonts.googleapis.com/css?family=Cabin:400");
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
 /* You can add global styles to this file, and also import other style files */
 body {
   margin: 0;
@@ -42,9 +43,9 @@ nav .logo {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 730px) {
   nav .logo {
-    width: 80px;
+    width: 100px;
   }
 }
 
@@ -65,11 +66,45 @@ nav ul li {
   margin-left: 15px;
   font-weight: bold;
   display: block;
+  font-size: 1em;
   text-decoration: none;
+  -webkit-transition: font-size 1s;
+  transition: font-size 1s;
 }
 
 nav ul li .selected {
   background-color: black;
+}
+
+@media screen and (max-width: 1230px) {
+  nav ul li {
+    border-radius: 5px 5px 5px 5px;
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 842px) {
+  nav ul li {
+    font-size: 0.7em;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  nav ul li {
+    font-size: 0.7em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  nav ul li {
+    font-size: 0.6em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  nav ul li {
+    font-size: 0.5em;
+  }
 }
 
 .hidden {
@@ -213,6 +248,57 @@ nav ul li .selected {
   text-align: center;
   margin: 0;
   font-weight: bold;
+}
+
+.slogan:first-of-type {
+  margin-top: -40px;
+}
+
+h1,
+h2 {
+  font-family: 'Indie Flower', cursive;
+  color: #d6c8c8;
+  text-align: center;
+  margin-bottom: -30px;
+  font-size: 3em;
+  -webkit-transition: font-size 1s;
+  transition: font-size 1s;
+}
+
+@media screen and (max-width: 1230px) {
+  h1,
+  h2 {
+    border-radius: 5px 5px 5px 5px;
+    font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 842px) {
+  h1,
+  h2 {
+    font-size: 1.9em;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  h1,
+  h2 {
+    font-size: 1.8em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  h1,
+  h2 {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  h1,
+  h2 {
+    font-size: 1em;
+  }
 }
 
 #container {

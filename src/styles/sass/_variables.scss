@@ -1,15 +1,16 @@
-@import url(https://fonts.googleapis.com/css?family=Cabin:400);
+@import url('https://fonts.googleapis.com/css?family=Cabin:400');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 // colors
 $darker: #2D2E2E;
 $pale-white: rgb(214, 200, 200);
 $input-field: #888;
 // sizes
 
-$break-tiny: 320px;
-$break-small: 411px;
-$break-medium: 600px;
-$break-large: 900px;
-$break-larger: 1200px;
+$break-tiny: 400px;
+$break-small: 600px;
+$break-medium: 650px;
+$break-large: 842px;
+$break-larger: 1230px;
 
 
 $font-cabin: 'Cabin', helvetica, arial, sans-serif;

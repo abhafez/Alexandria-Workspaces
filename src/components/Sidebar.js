@@ -37,8 +37,10 @@ class Sidebar extends Component {
     console.log(shownWorkspaces);
     return (
       <nav id='sidebar'>
+        <h1 className="sidebar-element">Alexandria Workspaces</h1>
         <img id="logo" className="logo sidebar-element" src={logo} alt="workspaces in Alex" />
-        <p className="slogan">Find your workspace & get out of your comfort zone</p>
+        <p className="slogan sidebar-element">Find your workspace</p>
+        <p className="slogan sidebar-element"> get out of your comfort zone</p>
         <div className='search-area sidebar-element'>
           <section className="search-box">
             <form>
