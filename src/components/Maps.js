@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
+// import MaterialIcon from 'material-icons-react'
 
 export class MapContainer extends Component {
   state = {
@@ -41,27 +42,32 @@ export class MapContainer extends Component {
           url: "../images/location24.png"
         }}
       >
-        {console.log(this.props.workspaces)}
         {this.props.workspaces.map((location) => (
           <Marker
             onClick={this.onMarkerClick}
             title={'The marker`s title will appear as a tooltip.'}
             name={location.name}
-            image={location.image}
+            phone={location.phone}
+            address={location.address}
+            link={location.page}
+            photo={location.image}
             icon={{
-              // url: "../images/location16.png"
+              url: "./images/location64.png"
               // anchor: new google.maps.Point(32,32),
               // scaledSize: new google.maps.Size(64,64)
             }}
             position={{ lat: location.lat, lng: location.lng }}  />
-          
+
         ))}
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
-          <div>
-            <p>{this.state.selectedPlace.name}</p>
-            <img src={this.state.selectedPlace.image} alt=""/>
+          <div className="infoWindow">
+            <h3 className ="info-title">{this.state.selectedPlace.name}</h3>
+            <p className= "info-address"><i class="material-icons">location_on</i>{this.state.selectedPlace.address}</p>
+            <p className="info-phone"><i class="material-icons">phone</i>{this.state.selectedPlace.phone}</p>
+            <img className="info-img" src={this.state.selectedPlace.photo} alt=""/>
+            <div className="info-link"><a className="info-link" href={this.state.selectedPlace.link}>Visit page</a></div>
           </div>
         </InfoWindow>
       </Map>
