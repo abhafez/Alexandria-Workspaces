@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
-// import MaterialIcon from 'material-icons-react'
 
 export class MapContainer extends Component {
   state = {
@@ -26,6 +25,7 @@ export class MapContainer extends Component {
   };
   
   render() {
+    {/*This style is used for the <Map></Map> inside only*/}
     const style = {
       width: '100%',
       height: '100%'
@@ -39,9 +39,7 @@ export class MapContainer extends Component {
           lng: 29.95
         }}
         style={style}
-        icon={{
-          url: "../images/location24.png"
-        }}
+        onClick={this.onMapClicked}
       >
         {this.props.workspaces.map((location) => (
           <Marker
@@ -58,8 +56,9 @@ export class MapContainer extends Component {
               url: "./images/location64.png"
             }}
             position={{ lat: location.lat, lng: location.lng }}  />
-
         ))}
+        {/* for UX the same icon included 64 & 32 */}
+        {/* NOTE: the last comment crashes code when included inside the Marker tag*/}
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
