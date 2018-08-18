@@ -24,13 +24,13 @@ export class MapContainer extends Component {
       })
     }
   };
-
+  
   render() {
-    console.log(this.props.selectedWorkspace)
     const style = {
       width: '100%',
       height: '100%'
     }
+    
     return (
       <Map
         google={this.props.google}
@@ -56,8 +56,6 @@ export class MapContainer extends Component {
             photo={location.image}
             icon={{
               url: "./images/location64.png"
-              // anchor: new google.maps.Point(32,32),
-              // scaledSize: new google.maps.Size(64,64)
             }}
             position={{ lat: location.lat, lng: location.lng }}  />
 

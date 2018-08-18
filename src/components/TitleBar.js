@@ -38,7 +38,8 @@ class TitleBar extends Component {
         el.style.display = 'block' :
         el.style.display = 'none'
     })
-
+    
+    // grid response on resize
     let gridView = document.getElementById('container')
     gridView.style['grid-template-columns'] === '0% 1fr' ?
       gridView.style['grid-template-columns'] = '20% 1fr' :

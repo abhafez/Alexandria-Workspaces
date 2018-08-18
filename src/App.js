@@ -5,13 +5,12 @@ import Maps from './components/Maps'
 import './styles/styles.css'
 import workspaces from './workspaces.json'
 
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       workspaces: workspaces,
-      selectedWorkspace: [{id: 0}]
+      selectedWorkspace: [{}]
     }
   }
 
@@ -28,10 +27,12 @@ class App extends Component {
           workspaces={workspaces}
           onSelection={this.selectWorkspace}
         />
-        <Maps
-          workspaces = {workspaces}
-          selectedWorkspace = {selectedWorkspace}
-        />
+        <main>
+          <Maps
+            workspaces = {workspaces}
+            selectedWorkspace = {selectedWorkspace}
+          />
+        </main>
       </div>
     );
   }

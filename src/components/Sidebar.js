@@ -11,14 +11,17 @@ class Sidebar extends Component {
     clicked: ''
   }
 
+  // Search action
   updateQuery = (query) => {
     this.setState({ query: query })
   }
 
+  // On search cancel
   clearQuery = () => {
     this.setState({ query: '' })
   }
 
+  
   assignSelected = (clicked) => {
     this.setState({ selected: clicked })
   }
@@ -35,7 +38,6 @@ class Sidebar extends Component {
       shownWorkspaces = workspaces
     }
 
-    console.log(shownWorkspaces);
     return (
       <nav id='sidebar'>
         <h1 className="sidebar-element">Alexandria Workspaces</h1>
