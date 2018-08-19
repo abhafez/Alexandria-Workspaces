@@ -1,224 +1,179 @@
 @import url("https://fonts.googleapis.com/css?family=Cabin:400");
 @import url("https://fonts.googleapis.com/css?family=Indie+Flower");
 /* You can add global styles to this file, and also import other style files */
-
 body {
   margin: 0;
   background: #2D2E2E;
   font-family: "Montserrat", sans-serif;
-  height: 100vh;
-}
+  height: 100vh; }
+
 nav {
   background: #2D2E2E;
   height: 100%;
-  padding-top: 20px;
-}
-nav .logo {
-  display: block;
-  width: 250px;
-  margin: auto;
-  -webkit-transition: width;
-  transition: width;
-  -webkit-transition-duration: 0.7s;
-  transition-duration: 0.7s;
-}
-@media screen and (max-width: 1230px) {
+  padding-top: 20px; }
   nav .logo {
-    border-radius: 5px 5px 5px 5px;
-    width: 210px;
-  }
-}
-@media screen and (max-width: 970px) {
-  nav .logo {
-    width: 160px;
-  }
-}
-@media screen and (max-width: 730px) {
-  nav .logo {
-    width: 100px;
-  }
-}
-@media screen and (max-width: 730px) {
-  nav .logo {
-    width: 100px;
-  }
-}
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-nav ul .hidden {
-  display: none;
-}
-nav ul li {
-  color: #d6c8c8;
-  padding: 10px;
-  font-family: "Montserrat", sans-serif;
-  margin-left: 15px;
-  font-weight: bold;
-  display: block;
-  font-size: 1.2em;
-  text-decoration: none;
-  -webkit-transition: font-size 1s;
-  transition: font-size 1s;
-}
-nav ul li .selected {
-  background-color: black;
-}
-@media screen and (max-width: 1230px) {
-  nav ul li {
-    border-radius: 5px 5px 5px 5px;
-    font-size: 0.9em;
-  }
-}
-@media screen and (max-width: 842px) {
-  nav ul li {
-    font-size: 0.7em;
-  }
-}
-@media screen and (max-width: 650px) {
-  nav ul li {
-    font-size: 0.7em;
-  }
-}
-@media screen and (max-width: 600px) {
-  nav ul li {
-    font-size: 0.6em;
-  }
-}
-@media screen and (max-width: 400px) {
-  nav ul li {
-    font-size: 0.5em;
-  }
-}
+    display: block;
+    width: 250px;
+    margin: auto;
+    -webkit-transition: width;
+    transition: width;
+    -webkit-transition-duration: 0.7s;
+            transition-duration: 0.7s; }
+    @media screen and (max-width: 1230px) {
+      nav .logo {
+        border-radius: 5px 5px 5px 5px;
+        width: 210px; } }
+    @media screen and (max-width: 970px) {
+      nav .logo {
+        width: 160px; } }
+    @media screen and (max-width: 730px) {
+      nav .logo {
+        width: 100px; } }
+    @media screen and (max-width: 730px) {
+      nav .logo {
+        width: 100px; } }
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; }
+    nav ul .hidden {
+      display: none; }
+    nav ul li {
+      color: #d6c8c8;
+      padding: 10px;
+      font-family: "Montserrat", sans-serif;
+      margin-left: 15px;
+      font-weight: bold;
+      display: block;
+      font-size: 1.2em;
+      text-decoration: none;
+      -webkit-transition: font-size 1s;
+      transition: font-size 1s; }
+      nav ul li .selected {
+        background-color: black; }
+      @media screen and (max-width: 1230px) {
+        nav ul li {
+          border-radius: 5px 5px 5px 5px;
+          font-size: 0.9em; } }
+      @media screen and (max-width: 842px) {
+        nav ul li {
+          font-size: 0.7em; } }
+      @media screen and (max-width: 650px) {
+        nav ul li {
+          font-size: 0.7em; } }
+      @media screen and (max-width: 600px) {
+        nav ul li {
+          font-size: 0.6em; } }
+      @media screen and (max-width: 400px) {
+        nav ul li {
+          font-size: 0.5em; } }
+
 .hidden {
-  width: 0px;
-}
+  width: 0px; }
+
 .search-area {
-  text-align: center;
-}
-.search-area .search-box {
-  margin: 2em auto;
-  position: relative;
-  width: 100%;
-}
-.search-area .search-box form {
-  border-radius: 5px;
-  display: inline-block;
-}
-.search-area .search-box input {
-  font-family: "Cabin", helvetica, arial, sans-serif;
-  color: #888;
-  background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#222));
-  background: linear-gradient(#333, #222);
-  background: #222;
-  border: 1px solid #444;
-  border-radius: 5px 0 0 5px;
-  display: block;
-  float: left;
-  font-size: 12px;
-  font-weight: 400;
-  height: 40px;
-  margin: 0;
-  padding: 0 10px;
-  width: 158px;
-  -webkit-transition: width;
-  transition: width;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-}
-@media screen and (max-width: 1230px) {
-  .search-area .search-box input {
-    border-radius: 5px 5px 5px 5px;
-    width: 130px;
-  }
-}
-@media screen and (max-width: 842px) {
-  .search-area .search-box input {
-    width: 90px;
-  }
-}
-@media screen and (max-width: 650px) {
-  .search-area .search-box input {
-    width: 90px;
-  }
-}
-@media screen and (max-width: 600px) {
-  .search-area .search-box input {
-    width: 70px;
-  }
-}
-@media screen and (max-width: 400px) {
-  .search-area .search-box input {
-    width: 50px;
-  }
-}
-.search-area .search-box input::-webkit-input-placeholder {
-  color: #888;
-}
-.search-area .search-box input:-moz-placeholder {
-  color: #888;
-}
-.search-area .search-box input:focus {
-  background: #222922;
-  background: -webkit-gradient(linear, left top, left bottom, from(#333933), to(#222922));
-  background: linear-gradient(#333933, #222922);
-  border-color: #249caa;
-  color: #efe;
-  outline: none;
-}
-.search-area .search-box button {
-  background: #222;
-  background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#222));
-  background: linear-gradient(#333, #222);
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  border: 1px solid #444;
-  border-left-color: #000;
-  border-radius: 0 5px 5px 0;
-  display: block;
-  font-family: "Cabin", helvetica, arial, sans-serif;
-  font-size: 10px;
-  font-weight: 400;
-  height: 40px;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  width: 35px;
-}
-@media screen and (max-width: 1230px) {
-  .search-area .search-box button {
-    display: none;
-  }
-}
-.search-area .search-box :hover,
-.search-area .search-box :focus {
-  background: #292929;
-  background: -webkit-gradient(linear, left top, left bottom, from(#393939), to(#292929));
-  background: linear-gradient(#393939, #292929);
-  color: #1e97b9;
-  outline: none;
-}
-.search-area .search-box :active {
-  background: #292929;
-  background: -webkit-gradient(linear, left top, left bottom, from(#393939), to(#292929));
-  background: linear-gradient(#393939, #292929);
-  top: 1px;
-}
+  text-align: center; }
+  .search-area .search-box {
+    margin: 2em auto;
+    position: relative;
+    width: 100%; }
+    .search-area .search-box form {
+      border-radius: 5px;
+      display: inline-block; }
+    .search-area .search-box input {
+      font-family: "Cabin", helvetica, arial, sans-serif;
+      color: #888;
+      background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#222));
+      background: linear-gradient(#333, #222);
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 5px 0 0 5px;
+      display: block;
+      float: left;
+      font-size: 12px;
+      font-weight: 400;
+      height: 40px;
+      margin: 0;
+      padding: 0 10px;
+      width: 158px;
+      -webkit-transition: width;
+      transition: width;
+      -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s; }
+      @media screen and (max-width: 1230px) {
+        .search-area .search-box input {
+          border-radius: 5px 5px 5px 5px;
+          width: 130px; } }
+      @media screen and (max-width: 842px) {
+        .search-area .search-box input {
+          width: 90px; } }
+      @media screen and (max-width: 650px) {
+        .search-area .search-box input {
+          width: 90px; } }
+      @media screen and (max-width: 600px) {
+        .search-area .search-box input {
+          width: 70px; } }
+      @media screen and (max-width: 400px) {
+        .search-area .search-box input {
+          width: 50px; } }
+    .search-area .search-box input::-webkit-input-placeholder {
+      color: #888; }
+    .search-area .search-box input:-moz-placeholder {
+      color: #888; }
+    .search-area .search-box input:focus {
+      background: #222922;
+      background: -webkit-gradient(linear, left top, left bottom, from(#333933), to(#222922));
+      background: linear-gradient(#333933, #222922);
+      border-color: #249caa;
+      color: #efe;
+      outline: none; }
+    .search-area .search-box button {
+      background: #222;
+      background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#222));
+      background: linear-gradient(#333, #222);
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      border: 1px solid #444;
+      border-left-color: #000;
+      border-radius: 0 5px 5px 0;
+      display: block;
+      font-family: "Cabin", helvetica, arial, sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      height: 40px;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      width: 35px; }
+      @media screen and (max-width: 1230px) {
+        .search-area .search-box button {
+          display: none; } }
+    .search-area .search-box :hover,
+    .search-area .search-box :focus {
+      background: #292929;
+      background: -webkit-gradient(linear, left top, left bottom, from(#393939), to(#292929));
+      background: linear-gradient(#393939, #292929);
+      color: #1e97b9;
+      outline: none; }
+    .search-area .search-box :active {
+      background: #292929;
+      background: -webkit-gradient(linear, left top, left bottom, from(#393939), to(#292929));
+      background: linear-gradient(#393939, #292929);
+      top: 1px; }
+
 .hideItem {
-  display: none;
-}
+  display: none; }
+
 .slogan {
   font-family: "Cabin", helvetica, arial, sans-serif;
   color: #d6c8c8;
   text-align: center;
   margin: 0;
-  font-weight: bold;
-}
+  font-weight: bold; }
+
 .slogan:first-of-type {
-  margin-top: -40px;
-}
+  margin-top: -40px; }
+
 h1,
 h2 {
   font-family: 'Indie Flower', cursive;
@@ -227,39 +182,29 @@ h2 {
   margin-bottom: -30px;
   font-size: 3em;
   -webkit-transition: font-size 1s;
-  transition: font-size 1s;
-}
-@media screen and (max-width: 1230px) {
-  h1,
-  h2 {
-    border-radius: 5px 5px 5px 5px;
-    font-size: 2em;
-  }
-}
-@media screen and (max-width: 842px) {
-  h1,
-  h2 {
-    font-size: 1.9em;
-  }
-}
-@media screen and (max-width: 650px) {
-  h1,
-  h2 {
-    font-size: 1.8em;
-  }
-}
-@media screen and (max-width: 600px) {
-  h1,
-  h2 {
-    font-size: 1.5em;
-  }
-}
-@media screen and (max-width: 400px) {
-  h1,
-  h2 {
-    font-size: 1em;
-  }
-}
+  transition: font-size 1s; }
+  @media screen and (max-width: 1230px) {
+    h1,
+    h2 {
+      border-radius: 5px 5px 5px 5px;
+      font-size: 2em; } }
+  @media screen and (max-width: 842px) {
+    h1,
+    h2 {
+      font-size: 1.9em; } }
+  @media screen and (max-width: 650px) {
+    h1,
+    h2 {
+      font-size: 1.8em; } }
+  @media screen and (max-width: 600px) {
+    h1,
+    h2 {
+      font-size: 1.5em; } }
+  @media screen and (max-width: 400px) {
+    h1,
+    h2 {
+      font-size: 1em; } }
+
 #container {
   display: grid;
   grid-template-areas: "nav hd" "nav  main";
@@ -267,59 +212,57 @@ h2 {
   grid-template-rows: 20% 1fr;
   height: 100%;
   -webkit-transition: 2s;
-  transition: 2s;
-}
-#container #content {
-  padding: 30px 50px;
-}
+  transition: 2s; }
+  #container #content {
+    padding: 30px 50px; }
+
 header {
-  grid-area: hd;
-}
+  grid-area: hd; }
+
 nav {
   grid-area: nav;
   -webkit-transition: all 1s;
   transition: all 1s;
-  margin-bottom: 0;
-}
+  margin-bottom: 0; }
+
 main {
-  grid-area: main;
-}
+  grid-area: main; }
+
 .title-bar {
   background: #3a3b3b;
-  height: 4em;
-}
+  height: 4em; }
+
 .title-bar i {
   margin-top: 0.3em;
-  margin-left: 0.5em;
-}
+  margin-left: 0.5em; }
+
 .title-bar .material-icons {
-  cursor: pointer;
-}
+  cursor: pointer; }
+
 .infoWindow {
-  font-family: "Cabin", helvetica, arial, sans-serif;
-}
+  font-family: "Cabin", helvetica, arial, sans-serif; }
+
 .info-title {
   font-size: 2.5em;
-  margin-bottom: 0px;
-}
+  margin-bottom: 0px; }
+
 .info-address {
-  font-size: 2.5em;
-}
+  font-size: 2.5em; }
+
 .info-phone {
-  font-size: 1.5em;
-}
+  font-size: 1.5em; }
+
 .info-img {
   width: 400px;
   display: block;
-  margin: auto;
-}
+  margin: auto; }
+
 .info-link {
   margin-top: 10px;
-  font-size: 1.5em;
-}
+  font-size: 1.5em; }
+
 .material-icons {
-  display: inline;
-}
+  display: inline; }
+
 .neo {
-  font-family: sans-serif;
-}
+  font-family: sans-serif; }

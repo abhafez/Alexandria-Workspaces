@@ -10,14 +10,21 @@ class App extends Component {
     super(props);
     this.state = {
       workspaces: workspaces,
-      selectedWorkspace: [{}]
-    }
+      selectedWorkspace: [{}],
+      matchQuery: []
+    },
+    this.getMatchQuery = this.getMatchQuery.bind(this)
   }
 
   selectWorkspace = (selcetedItem) => {
     this.setState({ selectedWorkspace: this.state.workspaces.filter((el) => el.id === selcetedItem) })
   }
 
+  getMatchQuery = (query) => {
+    this.setState({ matchQuery: query })
+  }
+  
+  
   render() {
     const { workspaces, selectedWorkspace } = this.state
     return (
@@ -26,6 +33,7 @@ class App extends Component {
         <Sidebar
           workspaces={workspaces}
           onSelection={this.selectWorkspace}
+          onSearch={this.getMatchQuery}
         />
         <main>
           <Maps

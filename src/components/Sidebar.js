@@ -8,7 +8,6 @@ class Sidebar extends Component {
   state = {
     query: '',
     selected: '',
-    clicked: ''
   }
 
   // Search action
@@ -34,9 +33,11 @@ class Sidebar extends Component {
     if (query) {
       const match = new RegExp(escapeRegExp(query), 'i')
       shownWorkspaces = workspaces.filter((workspace) => match.test(workspace.name))
+      console.log(shownWorkspaces)
     } else {
       shownWorkspaces = workspaces
     }
+    
 
     return (
       <nav id='sidebar'>
@@ -50,7 +51,13 @@ class Sidebar extends Component {
               <input
                 type="search"
                 placeholder="Find workspace .."
-                onChange={(event) => this.updateQuery(event.target.value)}>
+                onChange={(event) => {
+                  this.updateQuery(event.target.value)
+                  if (query.length > 0) {
+                    this.props.onSearch(shownWorkspaces)
+                  }
+                }
+              }>
               </input>
               <button><MaterialIcon icon="location_on" invert /></button>
             </form>
@@ -65,7 +72,8 @@ class Sidebar extends Component {
                 (() => this.props.onSelection(workspace.id))
                 (this.assignSelected(workspace.id))
                 event.target.classList.toggle('selected')
-              }}
+              }
+            }
             >
               {workspace.name}
             </li>
