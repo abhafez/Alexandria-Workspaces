@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar'
 import Maps from './components/Maps'
 import './styles/styles.css'
 import workspaces from './workspaces.json'
+import escapeRegExp from "escape-string-regexp"
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class App extends Component {
     this.state = {
       workspaces: workspaces,
       selectedWorkspace: [{}],
-      matchQuery: []
+      workspacesToShow: workspaces
     },
     this.getMatchQuery = this.getMatchQuery.bind(this)
   }
@@ -21,12 +22,21 @@ class App extends Component {
   }
 
   getMatchQuery = (query) => {
-    this.setState({ matchQuery: query })
+    let workspacesToShow
+    if (query) {
+      const match = new RegExp(escapeRegExp(query), 'i')
+      workspacesToShow = workspaces.filter((workspace) => match.test(workspace.name))
+      console.log(workspacesToShow)
+    } else {
+      workspacesToShow = workspaces
+    }
+    this.setState({workspacesToShow: workspacesToShow})
   }
   
   
   render() {
-    const { workspaces, selectedWorkspace } = this.state
+    const { workspaces, selectedWorkspace, workspacesToShow } = this.state
+    
     return (
       <div id="container">
         <TitleBar />
@@ -37,7 +47,7 @@ class App extends Component {
         />
         <main>
           <Maps
-            workspaces = {workspaces}
+            workspaces = {workspacesToShow}
             selectedWorkspace = {selectedWorkspace}
           />
         </main>
