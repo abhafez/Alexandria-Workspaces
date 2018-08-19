@@ -6,23 +6,34 @@ export class MapContainer extends Component {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {},
+    placeToBounce: [{}]
   };
 
-  onMarkerClick = (props, marker, e) =>
+  onMarkerClick = (props, marker, e) => {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
+      placeToBounce: [props],
       showingInfoWindow: true
-    });
+    })
+    console.log(props);
+  };
 
   onMapClicked = (props) => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null
+        activeMarker: null,
+        placeToBounce: [{}]
       })
     }
   };
+  
+  componentWillReceiveProps(nextProps) {
+      this.setState({
+        placeToBounce: nextProps.selectedWorkspace,
+      })
+  }
   
   render() {
     {/*This style is used for the <Map></Map> inside only*/}
@@ -31,9 +42,11 @@ export class MapContainer extends Component {
       height: '100%'
     }
     
+    const { workspaces, google} = this.props
+    const { placeToBounce, selectedPlace, showingInfoWindow, activeMarker} = this.state
     return (
       <Map
-        google={this.props.google}
+        google={google}
         initialCenter={{
           lat: 31.22,
           lng: 29.95
@@ -41,11 +54,11 @@ export class MapContainer extends Component {
         style={style}
         onClick={this.onMapClicked}
       >
-        {this.props.workspaces.map((location) => (
+        {workspaces.map((location) => (
           <Marker
             onClick={this.onMarkerClick}
-            animation={(this.props.selectedWorkspace[0]['id'] === location.id)
-              && this.props.google.maps.Animation.BOUNCE}
+            animation={(placeToBounce[0]['name'] === location.name)
+              && google.maps.Animation.BOUNCE}
             title={'The marker`s title will appear as a tooltip.'}
             name={location.name}
             phone={location.phone}
@@ -60,14 +73,14 @@ export class MapContainer extends Component {
         {/* for UX the same icon included 64 & 32 */}
         {/* NOTE: the last comment crashes code when included inside the Marker tag*/}
         <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}>
+          marker={activeMarker}
+          visible={showingInfoWindow}>
           <div className="infoWindow">
-            <h3 className ="info-title">{this.state.selectedPlace.name}</h3>
-            <p className= "info-address"><i class="material-icons">location_on</i>{this.state.selectedPlace.address}</p>
-            <p className="info-phone"><i class="material-icons">phone</i>{this.state.selectedPlace.phone}</p>
-            <img className="info-img" src={this.state.selectedPlace.photo} alt=""/>
-            <div className="info-link"><a className="info-link" href={this.state.selectedPlace.link}>Visit page</a></div>
+            <h3 className ="info-title">{selectedPlace.name}</h3>
+            <p className= "info-address"><i className="material-icons">location_on</i>{selectedPlace.address}</p>
+            <p className="info-phone"><i className="material-icons">phone</i>{selectedPlace.phone}</p>
+            <img className="info-img" src={selectedPlace.photo} alt=""/>
+            <div className="info-link"><a className="info-link" href={selectedPlace.link}>Visit page</a></div>
           </div>
         </InfoWindow>
       </Map>

@@ -5,10 +5,15 @@ import '../styles/styles.css'
 import escapeRegExp from "escape-string-regexp";
 
 class Sidebar extends Component {
-  state = {
-    query: '',
-    selected: ''
+  constructor(props){
+    super(props)
+    this.state = {
+      query: '',
+      selected: ''
+    },
+    this.submitIt = this.submitIt.bind(this)
   }
+  
 
   // Search action
   updateQuery = (query) => {
@@ -24,9 +29,15 @@ class Sidebar extends Component {
     this.setState({selected: clicked})
   }
 
+  submitIt() {
+    document.getElementById('textField').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('hi');
+      return false;
+    }, false);
+  }
+  
   render() {
-
-
 
     const {workspaces} = this.props
     const {query} = this.state
@@ -43,34 +54,42 @@ class Sidebar extends Component {
       return workspacesToShow
     }
 
-    return (<nav id='sidebar'>
-      <h1 className="sidebar-element">Alexandria Workspaces</h1>
-      <img id="logo" className="logo sidebar-element" src={logo} alt="workspaces in Alex"/>
-      <p className="slogan sidebar-element">Find your workspace</p>
-      <p className="slogan sidebar-element">
-        get out of your comfort zone</p>
-      <div className='search-area sidebar-element'>
-        <section className="search-box">
-          <form>
-            <input id="textField" type="search" placeholder="Find workspace .." onChange={(event) => {
-                this.updateQuery(event.target.value)
-                this.props.onSearch(event.target.value)
-              }}></input>
-          </form>
-        </section>
-      </div>
-      <p></p>
-      <ul className='sidebar-element'>
-        {
-          shownWorkspaces().map((workspace) => (<li key={workspace.id} className='' onClick={(event) => {
-              (() => this.props.onSelection(workspace.id))(this.assignSelected(workspace.id))
-              event.target.classList.toggle('selected')
-            }}>
-            {workspace.name}
-          </li>))
-        }
-      </ul >
-    </nav>);
+
+
+    return (
+      <nav id='sidebar'>
+        <h1 className="sidebar-element">Alexandria Workspaces</h1>
+        <img id="logo" className="logo sidebar-element" src={logo} alt="workspaces in Alex"/>
+        <p className="slogan sidebar-element">Find your workspace</p>
+        <p className="slogan sidebar-element">
+          get out of your comfort zone</p>
+        <div className='search-area sidebar-element'>
+          <section className="search-box">
+            <form>
+              <input
+                id="textField"
+                type="search"
+                onSubmit={()=> this.submitIt()}
+                placeholder="Find workspace .."
+                onChange={(event) => {
+                  this.updateQuery(event.target.value)
+                  this.props.onSearch(event.target.value)
+                }}></input>
+            </form>
+          </section>
+        </div>
+        <ul className='sidebar-element'>
+          {
+            shownWorkspaces().map((workspace) => (<li key={workspace.id} className='' onClick={(event) => {
+                (() => this.props.onSelection(workspace.id))(this.assignSelected(workspace.id))
+                event.target.classList.toggle('selected')
+              }}>
+              {workspace.name}
+            </li>))
+          }
+        </ul >
+      </nav>
+    );
   }
 }
 
