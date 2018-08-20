@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import MaterialIcon from 'material-icons-react'
 
 class TitleBar extends Component {
@@ -8,7 +8,7 @@ class TitleBar extends Component {
       hiddenByClick: false
     };
     this.toggleBarVisibility = this.toggleBarVisibility.bind(this)
-    this.sideBarVisibility = this.sideBarVisibility.bind(this)
+    // this.sideBarVisibility = this.sideBarVisibility.bind(this)
     this.hideShowMenu = this.hideShowMenu.bind(this)
   }
 
@@ -17,54 +17,55 @@ class TitleBar extends Component {
     window.addEventListener('resize', this.sideBarVisibility)
   }
 
-  sideBarVisibility() {
-    if (
-      window.innerWidth <= 770 &&
-      !document.getElementById('sidebar').classList.contains('hidden')) {
-      return this.toggleBarVisibility()
-    } else if (this.state.hiddenByClick !== true &&
-      window.innerWidth > 770 &&
-      document.getElementById('sidebar').classList.contains('hidden')) {
-      return this.toggleBarVisibility()
-    }
-  }
+  // sideBarVisibility() {
+  //   if (
+  //     window.innerWidth <= 770 &&
+  //     !document.getElementById('sidebar').classList.contains('hidden')) {
+  //     return this.toggleBarVisibility()
+  //   } else if (this.state.hiddenByClick !== true &&
+  //     window.innerWidth > 770 &&
+  //     document.getElementById('sidebar').classList.contains('hidden')) {
+  //     return this.toggleBarVisibility()
+  //   }
+  // }
 
   toggleBarVisibility() {
+    // Accessibility related
+    let trigger = document.getElementById('toggler');
+    trigger.getAttribute('aria-expanded') === 'false'
+      ? trigger.setAttribute('aria-expanded', true)
+      : trigger.setAttribute('aria-expanded', false);
+
+    // toogle sidebar
     let menu = document.getElementById('sidebar');
     menu.classList.toggle('hidden');
     let menuItems = document.querySelectorAll('.sidebar-element')
     menuItems.forEach((el) => {
-      el.style.display === 'none' ?
-        el.style.display = 'block' :
-        el.style.display = 'none'
+      el.style.display === 'none'
+        ? el.style.display = 'block'
+        : el.style.display = 'none'
     })
-    
+
     // grid response on resize
     let gridView = document.getElementById('container')
-    gridView.style['grid-template-columns'] === '0% 1fr' ?
-      gridView.style['grid-template-columns'] = '20% 1fr' :
-      gridView.style['grid-template-columns'] = '0% 1fr'
+    gridView.style['grid-template-columns'] === '0% 1fr'
+      ? gridView.style['grid-template-columns'] = '20% 1fr'
+      : gridView.style['grid-template-columns'] = '0% 1fr'
   }
 
   hideShowMenu() {
     this.toggleBarVisibility()
-    this.setState(prevState => ({ hiddenByClick: !prevState.hiddenByClick }))
+    this.setState(prevState => ({
+      hiddenByClick: !prevState.hiddenByClick
+    }))
   }
   render() {
-    return (
-      <div className="title-bar">
-        <span id='toggler' onClick={this.hideShowMenu}>
-          <MaterialIcon
-            icon="menu"
-            invert
-            size='medium'
-            className='toggle-nav-btn'
-          />
-        </span>
-      </div>
-    );
+    return (<div className="title-bar">
+      <span id='toggler' aria-expanded="true" onClick={this.hideShowMenu}>
+        <MaterialIcon icon="menu" invert="invert" size='medium' className='toggle-nav-btn'/>
+      </span>
+    </div>);
   }
 }
-
 
 export default TitleBar;

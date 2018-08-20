@@ -13,7 +13,7 @@ class App extends Component {
       workspaces: workspaces,
       selectedWorkspace: [{}],
       workspacesToShow: workspaces
-    },
+    }
     this.getMatchQuery = this.getMatchQuery.bind(this)
   }
 
@@ -39,6 +39,7 @@ class App extends Component {
     
     return (
       <div id="container">
+        <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
         <TitleBar />
         <Sidebar
           workspaces={workspaces}

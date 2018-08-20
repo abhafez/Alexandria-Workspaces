@@ -36,7 +36,7 @@ export class MapContainer extends Component {
   }
   
   render() {
-    {/*This style is used for the <Map></Map> inside only*/}
+    //This style is used for the <Map></Map> inside only
     const style = {
       width: '100%',
       height: '100%'
