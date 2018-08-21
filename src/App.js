@@ -18,7 +18,9 @@ class App extends Component {
   }
 
   selectWorkspace = (selcetedItem) => {
-    this.setState({ selectedWorkspace: this.state.workspaces.filter((el) => el.id === selcetedItem) })
+    this.setState({ selectedWorkspace:
+      this.state.workspaces.filter((el) => el.id === selcetedItem)
+    })
   }
 
   getMatchQuery = (query) => {

@@ -6,7 +6,8 @@ export class MapContainer extends Component {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {},
-    placeToBounce: [{}]
+    placeToBounce: [{}],
+    mapSize : 13
   };
 
   onMarkerClick = (props, marker, e) => {
@@ -35,6 +36,22 @@ export class MapContainer extends Component {
       })
   }
   
+  // Map size responsive design purpose 
+  componentDidMount() {
+    window.addEventListener('resize', this.fitMapSize, false)
+  }
+  
+  fitMapSize = () => {
+    let screenSize = window.innerWidth;
+    if (screenSize <= 600) {
+      this.setState({ mapSize: 12 })
+    } else if (screenSize >= 1200) {
+      this.setState({ mapSize: 14 })
+    } else {
+      this.setState({ mapSize: 13 })
+    }
+    console.log(this.state.mapSize)
+  }
   render() {
     //This style is used for the <Map></Map> inside only
     const style = {
@@ -43,7 +60,7 @@ export class MapContainer extends Component {
     }
     
     const { workspaces, google} = this.props
-    const { placeToBounce, selectedPlace, showingInfoWindow, activeMarker} = this.state
+    const { placeToBounce, selectedPlace, showingInfoWindow, activeMarker, mapSize} = this.state
     return (
       <Map
         google={google}
@@ -52,6 +69,7 @@ export class MapContainer extends Component {
           lng: 29.95
         }}
         style={style}
+        zoom={mapSize}
         onClick={this.onMapClicked}
       >
         {workspaces.map((location) => (

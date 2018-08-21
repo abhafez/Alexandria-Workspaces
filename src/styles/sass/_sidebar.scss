@@ -87,28 +87,12 @@ nav {
       float: left;
       font-size: 0.75em;
       font-weight: 400;
-      height: 2.5em;
+      height: 4em;
       margin: 0;
       padding: 0 0.625em;
-      width: 9.875em;
+      width: 25em;
       transition: width;
       transition-duration: 0.3s;
-      @media screen and (max-width: $break-larger) {
-        border-radius: 0.313em 0.313em 0.313em 0.313em;
-        width: 8.125em;
-      }
-      @media screen and (max-width: $break-large) {
-        width: 5.625em;
-      }
-      @media screen and (max-width: $break-medium) {
-        width: 5.625em;
-      }
-      @media screen and (max-width: $break-small) {
-        width: 4.375em;
-      }
-      @media screen and (max-width: $break-tiny) {
-        width: 3.125em;
-      }
     }
     input::-webkit-input-placeholder {
       color: $input-field;
@@ -181,21 +165,4 @@ h2 {
   text-align: center;
   font-size: 3em;
   transition: font-size 1s;
-  @media screen and (max-width: $break-larger) {
-    border-radius: 0.313em;
-    font-size: 2em;
-  }
-  @media screen and (max-width: $break-large) {
-    font-size: 1.9em;
-  }
-  @media screen and (max-width: $break-medium) {
-    font-size: 1.8em;
-  }
-  @media screen and (max-width: $break-small) {
-    font-size: 1.5em;
-  }
-  @media screen and (max-width: $break-tiny) {
-    font-size: 1em;
-  }
-
 }
