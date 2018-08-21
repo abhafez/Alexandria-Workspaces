@@ -10,10 +10,10 @@ body {
 nav {
   background: #2D2E2E;
   height: 100%;
-  padding-top: 20px; }
+  padding-top: 1.25em; }
   nav .logo {
     display: block;
-    width: 250px;
+    width: 15.625em;
     margin: auto;
     -webkit-transition: width;
     transition: width;
@@ -21,17 +21,17 @@ nav {
             transition-duration: 0.7s; }
     @media screen and (max-width: 1230px) {
       nav .logo {
-        border-radius: 5px 5px 5px 5px;
-        width: 210px; } }
-    @media screen and (max-width: 970px) {
+        border-radius: 0.313em 0.313em 0.313em 0.313em;
+        width: 13.125em; } }
+    @media screen and (max-width: 60.625em) {
       nav .logo {
-        width: 160px; } }
-    @media screen and (max-width: 730px) {
+        width: 10em; } }
+    @media screen and (max-width: 45.625em) {
       nav .logo {
-        width: 100px; } }
-    @media screen and (max-width: 730px) {
+        width: 6.25em; } }
+    @media screen and (max-width: 45.625em) {
       nav .logo {
-        width: 100px; } }
+        width: 6.25em; } }
   nav ul {
     list-style-type: none;
     padding: 0;
@@ -40,9 +40,9 @@ nav {
       display: none; }
     nav ul li {
       color: #d6c8c8;
-      padding: 10px;
+      padding: 0.625em;
       font-family: "Montserrat", sans-serif;
-      margin-left: 15px;
+      margin-left: 0.938em;
       font-weight: bold;
       display: block;
       font-size: 1.2em;
@@ -53,7 +53,7 @@ nav {
         background-color: black; }
       @media screen and (max-width: 1230px) {
         nav ul li {
-          border-radius: 5px 5px 5px 5px;
+          border-radius: 0.313em 0.313em 0.313em 0.313em;
           font-size: 0.9em; } }
       @media screen and (max-width: 842px) {
         nav ul li {
@@ -64,12 +64,12 @@ nav {
       @media screen and (max-width: 600px) {
         nav ul li {
           font-size: 0.6em; } }
-      @media screen and (max-width: 400px) {
+      @media screen and (max-width: 25em) {
         nav ul li {
           font-size: 0.5em; } }
 
 .hidden {
-  width: 0px; }
+  width: 0em; }
 
 .search-area {
   text-align: center; }
@@ -78,7 +78,7 @@ nav {
     position: relative;
     width: 100%; }
     .search-area .search-box form {
-      border-radius: 5px;
+      border-radius: 0.313em;
       display: inline-block; }
     .search-area .search-box input {
       font-family: "Cabin", helvetica, arial, sans-serif;
@@ -86,36 +86,36 @@ nav {
       background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#222));
       background: linear-gradient(#333, #222);
       background: #222;
-      border: 1px solid #444;
-      border-radius: 5px 0 0 5px;
+      border: 0.063em solid #444;
+      border-radius: 0.313em 0 0 0.313em;
       display: block;
       float: left;
-      font-size: 12px;
+      font-size: 0.75em;
       font-weight: 400;
-      height: 40px;
+      height: 2.5em;
       margin: 0;
-      padding: 0 10px;
-      width: 158px;
+      padding: 0 0.625em;
+      width: 9.875em;
       -webkit-transition: width;
       transition: width;
       -webkit-transition-duration: 0.3s;
               transition-duration: 0.3s; }
       @media screen and (max-width: 1230px) {
         .search-area .search-box input {
-          border-radius: 5px 5px 5px 5px;
-          width: 130px; } }
+          border-radius: 0.313em 0.313em 0.313em 0.313em;
+          width: 8.125em; } }
       @media screen and (max-width: 842px) {
         .search-area .search-box input {
-          width: 90px; } }
+          width: 5.625em; } }
       @media screen and (max-width: 650px) {
         .search-area .search-box input {
-          width: 90px; } }
+          width: 5.625em; } }
       @media screen and (max-width: 600px) {
         .search-area .search-box input {
-          width: 70px; } }
-      @media screen and (max-width: 400px) {
+          width: 4.375em; } }
+      @media screen and (max-width: 25em) {
         .search-area .search-box input {
-          width: 50px; } }
+          width: 3.125em; } }
     .search-area .search-box input::-webkit-input-placeholder {
       color: #888; }
     .search-area .search-box input:-moz-placeholder {
@@ -133,14 +133,14 @@ nav {
       background: linear-gradient(#333, #222);
       -webkit-box-sizing: border-box;
               box-sizing: border-box;
-      border: 1px solid #444;
+      border: 0.063em solid #444;
       border-left-color: #000;
-      border-radius: 0 5px 5px 0;
+      border-radius: 0 0.313em 0.313em 0;
       display: block;
       font-family: "Cabin", helvetica, arial, sans-serif;
-      font-size: 10px;
+      font-size: 0.625em;
       font-weight: 400;
-      height: 40px;
+      height: 2.5em;
       margin: 0;
       padding: 0;
       position: relative;
@@ -159,7 +159,7 @@ nav {
       background: #292929;
       background: -webkit-gradient(linear, left top, left bottom, from(#393939), to(#292929));
       background: linear-gradient(#393939, #292929);
-      top: 1px; }
+      top: 0.063em; }
 
 .hideItem {
   display: none; }
@@ -172,21 +172,20 @@ nav {
   font-weight: bold; }
 
 .slogan:first-of-type {
-  margin-top: -40px; }
+  margin-top: -2.5em; }
 
 h1,
 h2 {
   font-family: 'Indie Flower', cursive;
   color: #d6c8c8;
   text-align: center;
-  margin-bottom: -30px;
   font-size: 3em;
   -webkit-transition: font-size 1s;
   transition: font-size 1s; }
   @media screen and (max-width: 1230px) {
     h1,
     h2 {
-      border-radius: 5px 5px 5px 5px;
+      border-radius: 0.313em;
       font-size: 2em; } }
   @media screen and (max-width: 842px) {
     h1,
@@ -200,7 +199,7 @@ h2 {
     h1,
     h2 {
       font-size: 1.5em; } }
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 25em) {
     h1,
     h2 {
       font-size: 1em; } }
@@ -214,7 +213,7 @@ h2 {
   -webkit-transition: 2s;
   transition: 2s; }
   #container #content {
-    padding: 30px 50px; }
+    padding: 1.875em 3.125em; }
 
 header {
   grid-area: hd; }
@@ -256,14 +255,14 @@ main {
   clip: auto !important;
   color: #21759b;
   display: block;
-  font-size: 14px;
+  font-size: 0.875em;
   font-weight: bold;
   height: auto;
-  left: 5px;
+  left: 0.313em;
   line-height: normal;
-  padding: 15px 23px 14px;
+  padding: 0.938em 1.438em 0.875em;
   text-decoration: none;
-  top: 5px;
+  top: 0.313em;
   width: auto;
   z-index: 100000;
   /* Above WP toolbar */ }
@@ -282,7 +281,7 @@ main {
   font-size: 1.5em; }
 
 .info-img {
-  width: 400px;
+  width: 25em;
   display: block;
   margin: auto; }
 

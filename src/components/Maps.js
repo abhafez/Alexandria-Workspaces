@@ -39,7 +39,7 @@ export class MapContainer extends Component {
     //This style is used for the <Map></Map> inside only
     const style = {
       width: '100%',
-      height: '100%'
+      height: '90%'
     }
     
     const { workspaces, google} = this.props

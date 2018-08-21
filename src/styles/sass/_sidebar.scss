@@ -1,25 +1,25 @@
 nav {
   background: $darker;
   height: 100%;
-  padding-top: 20px;
+  padding-top: 1.25em;
   .logo {
     display: block;
-    width: 250px;
+    width: 15.625em;
     margin: auto;
     transition: width;
     transition-duration: 0.7s;
     @media screen and (max-width: $break-larger) {
-      border-radius: 5px 5px 5px 5px;
-      width: 210px;
+      border-radius: 0.313em 0.313em 0.313em 0.313em;
+      width: 13.125em;
     }
-    @media screen and (max-width: 970px) {
-      width: 160px;
+    @media screen and (max-width: 60.625em) {
+      width: 10em;
     }
-    @media screen and (max-width: 730px) {
-      width: 100px;
+    @media screen and (max-width: 45.625em) {
+      width: 6.25em;
     }
-    @media screen and (max-width: 730px) {
-      width: 100px;
+    @media screen and (max-width: 45.625em) {
+      width: 6.25em;
     }
   }
   ul {
@@ -31,9 +31,9 @@ nav {
     }
     li {
       color: $pale-white;
-      padding: 10px;
+      padding: 0.625em;
       font-family: $fonty-monty;
-      margin-left: 15px;
+      margin-left: 0.938em;
       font-weight: bold;
       display: block;
       font-size: 1.2em;
@@ -43,7 +43,7 @@ nav {
         background-color: darken($darker, 30%)
       }
       @media screen and (max-width: $break-larger) {
-        border-radius: 5px 5px 5px 5px;
+        border-radius: 0.313em 0.313em 0.313em 0.313em;
         font-size: 0.9em;
       }
       @media screen and (max-width: $break-large) {
@@ -63,7 +63,7 @@ nav {
 }
 
 .hidden {
-  width: 0px;
+  width: 0em;
 }
 
 .search-area {
@@ -73,7 +73,7 @@ nav {
     position: relative;
     width: 100%;
     form {
-      border-radius: 5px;
+      border-radius: 0.313em;
       display: inline-block;
     }
     input {
@@ -81,33 +81,33 @@ nav {
       color: $input-field;
       background: linear-gradient(#333, #222);
       background: #222;
-      border: 1px solid #444;
-      border-radius: 5px 0 0 5px;
+      border: 0.063em solid #444;
+      border-radius: 0.313em 0 0 0.313em;
       display: block;
       float: left;
-      font-size: 12px;
+      font-size: 0.75em;
       font-weight: 400;
-      height: 40px;
+      height: 2.5em;
       margin: 0;
-      padding: 0 10px;
-      width: 158px;
+      padding: 0 0.625em;
+      width: 9.875em;
       transition: width;
       transition-duration: 0.3s;
       @media screen and (max-width: $break-larger) {
-        border-radius: 5px 5px 5px 5px;
-        width: 130px;
+        border-radius: 0.313em 0.313em 0.313em 0.313em;
+        width: 8.125em;
       }
       @media screen and (max-width: $break-large) {
-        width: 90px;
+        width: 5.625em;
       }
       @media screen and (max-width: $break-medium) {
-        width: 90px;
+        width: 5.625em;
       }
       @media screen and (max-width: $break-small) {
-        width: 70px;
+        width: 4.375em;
       }
       @media screen and (max-width: $break-tiny) {
-        width: 50px;
+        width: 3.125em;
       }
     }
     input::-webkit-input-placeholder {
@@ -127,14 +127,14 @@ nav {
       background: #222;
       background: linear-gradient(#333, #222);
       box-sizing: border-box;
-      border: 1px solid #444;
+      border: 0.063em solid #444;
       border-left-color: #000;
-      border-radius: 0 5px 5px 0;
+      border-radius: 0 0.313em 0.313em 0;
       display: block;
       font-family: $font-cabin;
-      font-size: 10px;
+      font-size: 0.625em;
       font-weight: 400;
-      height: 40px; // line-height: 40px;
+      height: 2.5em;
       margin: 0;
       padding: 0;
       position: relative;
@@ -153,7 +153,7 @@ nav {
     :active {
       background: #292929;
       background: linear-gradient(#393939, #292929);
-      top: 1px;
+      top: 0.063em;
     }
   }
 }
@@ -171,7 +171,7 @@ nav {
 }
 
 .slogan:first-of-type {
-  margin-top: -40px;
+  margin-top: -2.5em;
 }
 
 h1,
@@ -179,11 +179,10 @@ h2 {
   font-family: 'Indie Flower', cursive;
   color: $pale-white;
   text-align: center;
-  margin-bottom: -30px;
   font-size: 3em;
   transition: font-size 1s;
   @media screen and (max-width: $break-larger) {
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 0.313em;
     font-size: 2em;
   }
   @media screen and (max-width: $break-large) {
