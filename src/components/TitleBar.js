@@ -8,7 +8,7 @@ class TitleBar extends Component {
       hiddenByClick: false
     };
     this.toggleBarVisibility = this.toggleBarVisibility.bind(this)
-    // this.sideBarVisibility = this.sideBarVisibility.bind(this)
+    this.sideBarVisibility = this.sideBarVisibility.bind(this)
     this.hideShowMenu = this.hideShowMenu.bind(this)
   }
 
@@ -17,17 +17,17 @@ class TitleBar extends Component {
     window.addEventListener('resize', this.sideBarVisibility)
   }
 
-  // sideBarVisibility() {
-  //   if (
-  //     window.innerWidth <= 770 &&
-  //     !document.getElementById('sidebar').classList.contains('hidden')) {
-  //     return this.toggleBarVisibility()
-  //   } else if (this.state.hiddenByClick !== true &&
-  //     window.innerWidth > 770 &&
-  //     document.getElementById('sidebar').classList.contains('hidden')) {
-  //     return this.toggleBarVisibility()
-  //   }
-  // }
+  sideBarVisibility() {
+    if (
+      window.innerWidth <= 770 &&
+      !document.getElementById('sidebar').classList.contains('hidden')) {
+      return this.toggleBarVisibility()
+    } else if (this.state.hiddenByClick !== true &&
+      window.innerWidth > 770 &&
+      document.getElementById('sidebar').classList.contains('hidden')) {
+      return this.toggleBarVisibility()
+    }
+  }
 
   toggleBarVisibility() {
     // Accessibility related
@@ -60,11 +60,16 @@ class TitleBar extends Component {
     }))
   }
   render() {
-    return (<div className="title-bar">
-      <span id='toggler' aria-expanded="true" onClick={this.hideShowMenu}>
-        <MaterialIcon icon="menu" invert="invert" size='medium' className='toggle-nav-btn'/>
-      </span>
-    </div>);
+    return (
+      <div className="title-bar" id="title-bar">
+        <span id='toggler' aria-expanded="true" onClick={this.hideShowMenu}>
+          <MaterialIcon icon="menu" invert="invert" size='medium' className='toggle-nav-btn'/>
+        </span>
+        <div className="logo-container">
+          <h1 className="logo" id='logo'>Alexandria Workspaces</h1>
+        </div>
+    </div>
+    );
   }
 }
 

@@ -59,7 +59,7 @@ class Sidebar extends Component {
       <nav id='sidebar'>
         <div className="grid-logo">
           <h1 className="sidebar-element">Alexandria Workspaces</h1>
-          <img id="logo" className="logo sidebar-element" src={logo} alt="workspaces in Alex"/>
+          <img id="logo-img" className="logo-img sidebar-element" src={logo} alt="workspaces in Alex"/>
           <p className="slogan sidebar-element">Find your workspace</p>
           <p className="slogan sidebar-element">
             get out of your comfort zone</p>

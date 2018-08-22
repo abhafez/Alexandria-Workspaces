@@ -36,31 +36,35 @@ export class MapContainer extends Component {
       })
   }
   
-  // Map size responsive design purpose 
+  // Map size responsive design purpose
   componentDidMount() {
+    let titleBarHeight = document.getElementById('title-bar').innerHeight
+    console.log(titleBarHeight)
+    let mapSecondDiv = document.getElementsByTagName('main');
+    mapSecondDiv[0].childNodes[0].childNodes[0].style.height = `${window.innerHeight - 20*16}px`
+    
     window.addEventListener('resize', this.fitMapSize, false)
+    window.addEventListener('load', this.fitMapSize, false);
   }
   
   fitMapSize = () => {
     let screenSize = window.innerWidth;
-    if (screenSize <= 600) {
+    screenSize <= 411 ? this.setState({ mapSize: 12 }) :
+    (screenSize >= 1200) ? this.setState({ mapSize: 13 }) :
       this.setState({ mapSize: 12 })
-    } else if (screenSize >= 1200) {
-      this.setState({ mapSize: 14 })
-    } else {
-      this.setState({ mapSize: 13 })
-    }
     console.log(this.state.mapSize)
   }
   render() {
     //This style is used for the <Map></Map> inside only
     const style = {
       width: '100%',
-      height: '90%'
+      height: '100%'
     }
     
     const { workspaces, google} = this.props
     const { placeToBounce, selectedPlace, showingInfoWindow, activeMarker, mapSize} = this.state
+    
+
     return (
       <Map
         google={google}
