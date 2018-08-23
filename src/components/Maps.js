@@ -43,7 +43,8 @@ export class MapContainer extends Component {
     let titleBarHeight = document.getElementById('title-bar').innerHeight
     console.log(titleBarHeight)
     let mapSecondDiv = document.getElementsByTagName('main');
-    mapSecondDiv[0].childNodes[0].childNodes[0].style.height = `${window.innerHeight - 20*16}px`
+    // ${window.innerHeight - 20*16}px
+    mapSecondDiv[0].childNodes[0].childNodes[0].style.height = `569.7px`
     
     window.addEventListener('resize', this.fitMapSize, false)
     window.addEventListener('load', this.fitMapSize, false);

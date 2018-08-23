@@ -1,14 +1,11 @@
 nav {
   background: $darker;
   height: 100%;
-  padding-top: 1.25em;
-  @media screen and (max-width: 22.5em) {
-    padding-top: 0em;
-  }
   .logo-img { // Image logo
     display: block;
-    width: 5em;
+    width: 10em;
     margin: auto;
+    margin-top: -2em;
     transition: width;
     transition-duration: 0.7s;
     @media screen and (max-width: 22.5em) {
@@ -24,8 +21,10 @@ nav {
       display: none;
     }
     li {
+      text-align: center;
+      text-justify: left;
       color: $pale-white;
-      padding: 0.625em;
+      padding: 0.425em;
       font-family: $fonty-monty;
       margin-left: 0.938em;
       font-weight: bold;
@@ -47,7 +46,7 @@ nav {
 .search-area {
   text-align: center;
   .search-box {
-    margin: 2em auto;
+    margin: 1em auto;
     position: relative;
     width: 100%;
     form {
@@ -130,11 +129,11 @@ nav {
   text-align: center;
   margin: 0;
   font-weight: bold;
-  font-size: .6em;
+  font-size: 1em;
 }
 
 .slogan:first-of-type {
-  font-size: .6em;
+  font-size: 1em;
   margin-top: -2.5em;
 }
 
@@ -143,8 +142,10 @@ h2 {
   font-family: 'Indie Flower', cursive;
   color: $pale-white;
   text-align: center;
-  font-size: 1em;
+  font-size: 3em;
   transition: font-size 1s;
+  margin: 0;
+  display: inline-block;
   @media screen and (max-width: 22.5em) {
     font-size: 1em;
   }

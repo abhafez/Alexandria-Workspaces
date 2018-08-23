@@ -54,38 +54,36 @@ class Sidebar extends Component {
     }
 
     return (
-
         <nav id='sidebar'>
           <div className="grid-logo">
-            <h1 className="sidebar-element">Alexandria Workspaces</h1>
             <img id="logo-img" className="logo-img sidebar-element" src={logo} alt="workspaces in Alex"/>
             <p className="slogan sidebar-element">Find your workspace</p>
             <p className="slogan sidebar-element">
               get out of your comfort zone</p>
           </div>
-          <div id="search-box" className='search-area sidebar-element'>
-            <section className="search-box">
-              <form>
-                <input id="textField" type="search" onSubmit={() => this.submitIt()} placeholder="Find workspace .." onChange={(event) => {
-                    this.updateQuery(event.target.value)
-                    this.props.onSearch(event.target.value)
-                  }}></input>
-              </form>
-            </section>
-          </div>
-          <ul id="search-results" className='sidebar-element'>
-            {
-              shownWorkspaces().map((workspace) => (<li key={workspace.id} className='' onClick={(event) => {
-                  (() => this.props.onSelection(workspace.id))(this.assignSelected(workspace.id))
-                  event.target.classList.toggle('selected')
-                }}>
-                {workspace.name}
-              </li>))
-            }
-          </ul>
+          <div id="search-results">
+            <div id="search-box" className='search-area sidebar-element'>
+              <section className="search-box">
+                <form>
+                  <input id="textField" type="search" onSubmit={() => this.submitIt()} placeholder="Find workspace .." onChange={(event) => {
+                      this.updateQuery(event.target.value)
+                      this.props.onSearch(event.target.value)
+                    }}></input>
+                </form>
+              </section>
+            </div>
+            <ul className='sidebar-element'>
+              {
+                shownWorkspaces().map((workspace) => (<li key={workspace.id} className='' onClick={(event) => {
+                    (() => this.props.onSelection(workspace.id))(this.assignSelected(workspace.id))
+                    event.target.classList.toggle('selected')
+                  }}>
+                  {workspace.name}
+                </li>))
+              }
+            </ul>
+        </div>
         </nav>
-    //           <ReactFitText compressor={2}>
-    // </ReactFitText>
   );
   }
 }

@@ -8,7 +8,7 @@ class TitleBar extends Component {
       hiddenByClick: false
     };
     this.toggleBarVisibility = this.toggleBarVisibility.bind(this)
-    this.sideBarVisibility = this.sideBarVisibility.bind(this)
+    // this.sideBarVisibility = this.sideBarVisibility.bind(this)
     this.hideShowMenu = this.hideShowMenu.bind(this)
   }
 
@@ -17,17 +17,17 @@ class TitleBar extends Component {
     window.addEventListener('resize', this.sideBarVisibility)
   }
 
-  sideBarVisibility() {
-    if (
-      window.innerWidth <= 770 &&
-      !document.getElementById('sidebar').classList.contains('hidden')) {
-      return this.toggleBarVisibility()
-    } else if (this.state.hiddenByClick !== true &&
-      window.innerWidth > 770 &&
-      document.getElementById('sidebar').classList.contains('hidden')) {
-      return this.toggleBarVisibility()
-    }
-  }
+  // sideBarVisibility() {
+  //   if (
+  //     window.innerWidth <= 770 &&
+  //     !document.getElementById('sidebar').classList.contains('hidden')) {
+  //     return this.toggleBarVisibility()
+  //   } else if (this.state.hiddenByClick !== true &&
+  //     window.innerWidth > 770 &&
+  //     document.getElementById('sidebar').classList.contains('hidden')) {
+  //     return this.toggleBarVisibility()
+  //   }
+  // }
 
   toggleBarVisibility() {
     // Accessibility related
@@ -45,12 +45,6 @@ class TitleBar extends Component {
         ? el.style.display = 'block'
         : el.style.display = 'none'
     })
-
-    // grid response on resize
-    let gridView = document.getElementById('container')
-    gridView.style['grid-template-columns'] === '0% 1fr'
-      ? gridView.style['grid-template-columns'] = '20% 1fr'
-      : gridView.style['grid-template-columns'] = '0% 1fr'
   }
 
   hideShowMenu() {
@@ -65,6 +59,9 @@ class TitleBar extends Component {
         <span id='toggler' aria-expanded="true" onClick={this.hideShowMenu}>
           <MaterialIcon icon="menu" invert size='medium' className='toggle-nav-btn'/>
         </span>
+        <div id="logo-te">
+          <h1 className="sidebar-element">Alexandria Workspaces</h1>
+        </div>
     </div>
     );
   }

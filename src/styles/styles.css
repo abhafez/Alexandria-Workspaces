@@ -34,20 +34,16 @@ body {
   text-decoration: none;
   top: 0.313em;
   width: auto;
-  z-index: 100000;
-  /* Above WP toolbar */ }
+  z-index: 100000; }
 
 nav {
   background: #2D2E2E;
-  height: 100%;
-  padding-top: 1.25em; }
-  @media screen and (max-width: 22.5em) {
-    nav {
-      padding-top: 0em; } }
+  height: 100%; }
   nav .logo-img {
     display: block;
-    width: 5em;
+    width: 10em;
     margin: auto;
+    margin-top: -2em;
     -webkit-transition: width;
     transition: width;
     -webkit-transition-duration: 0.7s;
@@ -63,8 +59,10 @@ nav {
     nav ul .hidden {
       display: none; }
     nav ul li {
+      text-align: center;
+      text-justify: left;
       color: #d6c8c8;
-      padding: 0.625em;
+      padding: 0.425em;
       font-family: "Montserrat", sans-serif;
       margin-left: 0.938em;
       font-weight: bold;
@@ -82,7 +80,7 @@ nav {
 .search-area {
   text-align: center; }
   .search-area .search-box {
-    margin: 2em auto;
+    margin: 1em auto;
     position: relative;
     width: 100%; }
     .search-area .search-box form {
@@ -162,10 +160,10 @@ nav {
   text-align: center;
   margin: 0;
   font-weight: bold;
-  font-size: .6em; }
+  font-size: 1em; }
 
 .slogan:first-of-type {
-  font-size: .6em;
+  font-size: 1em;
   margin-top: -2.5em; }
 
 h1,
@@ -173,9 +171,11 @@ h2 {
   font-family: 'Indie Flower', cursive;
   color: #d6c8c8;
   text-align: center;
-  font-size: 1em;
+  font-size: 3em;
   -webkit-transition: font-size 1s;
-  transition: font-size 1s; }
+  transition: font-size 1s;
+  margin: 0;
+  display: inline-block; }
   @media screen and (max-width: 22.5em) {
     h1,
     h2 {
@@ -185,7 +185,7 @@ h2 {
   display: grid;
   grid-template-areas: "hd" "nav" "main";
   grid-template-columns: 1fr;
-  grid-template-rows: 20% 20% 1fr;
+  grid-template-rows: 10% 30% auto;
   height: 100%;
   -webkit-transition: 2s;
   transition: 2s; }
@@ -212,6 +212,11 @@ main {
 
 #search-results {
   grid-area: search-results; }
+
+#logo-text {
+  margin: 0 auto;
+  display: float;
+  text-align: center; }
 
 .title-bar {
   background: #414343;

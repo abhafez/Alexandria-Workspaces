@@ -4,7 +4,7 @@
   //                      "nav  main";
   grid-template-areas: "hd" "nav" "main";
   grid-template-columns: 1fr;
-  grid-template-rows: 20% 20% 1fr;
+  grid-template-rows: 10% 30% auto;
   height: 100%;
   transition: 2s;
   #content {
@@ -35,4 +35,10 @@ main {
 
 #search-results {
   grid-area: search-results;
+}
+
+#logo-text {
+  margin: 0 auto;
+  display: float;
+  text-align: center;
 }
