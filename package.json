@@ -100,6 +100,7 @@
     "material-icons-react": "^1.0.2",
     "node-sass": "^4.9.3",
     "react-controllables": "^0.6.0",
+    "react-fittext": "^1.0.0",
     "sass-lint": "^1.12.1",
     "sass-loader": "^7.1.0",
     "scss-lint": "0.0.0",

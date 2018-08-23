@@ -8,31 +8,53 @@ body {
   font-size: 100%;
   height: 100vh; }
 
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden; }
+
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+          box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 0.875em;
+  font-weight: bold;
+  height: auto;
+  left: 0.313em;
+  line-height: normal;
+  padding: 0.938em 1.438em 0.875em;
+  text-decoration: none;
+  top: 0.313em;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar */ }
+
 nav {
   background: #2D2E2E;
   height: 100%;
   padding-top: 1.25em; }
-  nav .logo {
+  @media screen and (max-width: 22.5em) {
+    nav {
+      padding-top: 0em; } }
+  nav .logo-img {
     display: block;
-    width: 15.625em;
+    width: 12.5em;
     margin: auto;
     -webkit-transition: width;
     transition: width;
     -webkit-transition-duration: 0.7s;
             transition-duration: 0.7s; }
-    @media screen and (max-width: 76em) {
-      nav .logo {
-        border-radius: 0.313em 0.313em 0.313em 0.313em;
-        width: 13.125em; } }
-    @media screen and (max-width: 60.625em) {
-      nav .logo {
-        width: 10em; } }
-    @media screen and (max-width: 45.625em) {
-      nav .logo {
-        width: 6.25em; } }
-    @media screen and (max-width: 45.625em) {
-      nav .logo {
-        width: 6.25em; } }
+    @media screen and (max-width: 22.5em) {
+      nav .logo-img {
+        width: 100px; } }
   nav ul {
     list-style-type: none;
     padding: 0;
@@ -52,22 +74,6 @@ nav {
       transition: font-size 1s; }
       nav ul li .selected {
         background-color: black; }
-      @media screen and (max-width: 76em) {
-        nav ul li {
-          border-radius: 0.313em 0.313em 0.313em 0.313em;
-          font-size: 0.9em; } }
-      @media screen and (max-width: 52em) {
-        nav ul li {
-          font-size: 0.7em; } }
-      @media screen and (max-width: 40em) {
-        nav ul li {
-          font-size: 0.7em; } }
-      @media screen and (max-width: 37em) {
-        nav ul li {
-          font-size: 0.6em; } }
-      @media screen and (max-width: 25em) {
-        nav ul li {
-          font-size: 0.5em; } }
 
 .hidden {
   width: 0em; }
@@ -167,6 +173,10 @@ h2 {
   font-size: 3em;
   -webkit-transition: font-size 1s;
   transition: font-size 1s; }
+  @media screen and (max-width: 22.5em) {
+    h1,
+    h2 {
+      font-size: 1em; } }
 
 #container {
   display: grid;
@@ -192,7 +202,7 @@ main {
   grid-area: main; }
 
 .title-bar {
-  background: #3a3b3b;
+  background: #414343;
   height: 4em; }
 
 .title-bar i {
@@ -202,56 +212,72 @@ main {
 .title-bar .material-icons {
   cursor: pointer; }
 
-.screen-reader-text {
-  clip: rect(1px, 1px, 1px, 1px);
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden; }
-
-.screen-reader-text:hover,
-.screen-reader-text:active,
-.screen-reader-text:focus {
-  background-color: #f1f1f1;
-  border-radius: 3px;
-  -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-          box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-  clip: auto !important;
-  color: #21759b;
-  display: block;
-  font-size: 0.875em;
-  font-weight: bold;
-  height: auto;
-  left: 0.313em;
-  line-height: normal;
-  padding: 0.938em 1.438em 0.875em;
-  text-decoration: none;
-  top: 0.313em;
-  width: auto;
-  z-index: 100000;
-  /* Above WP toolbar */ }
-
 .infoWindow {
-  font-family: "Cabin", helvetica, arial, sans-serif; }
+  font-family: "Cabin", helvetica, arial, sans-serif;
+  padding: 0;
+  margin: 0; }
 
 .info-title {
   font-size: 2.5em;
   margin-bottom: 0px; }
+  @media screen and (max-width: 950px) {
+    .info-title {
+      font-size: 1.5em; } }
+  @media screen and (max-width: 600px) {
+    .info-title {
+      font-size: 1.2em;
+      font-weight: bold; } }
+  @media screen and (max-width: 411px) {
+    .info-title {
+      font-size: 1em; } }
 
 .info-address {
   font-size: 2.5em; }
+  @media screen and (max-width: 950px) {
+    .info-address {
+      font-size: 1.5em; } }
+  @media screen and (max-width: 600px) {
+    .info-address {
+      font-size: 1.2em;
+      font-weight: bold; } }
+  @media screen and (max-width: 411px) {
+    .info-address {
+      font-size: 0.7em; } }
 
 .info-phone {
   font-size: 1.5em; }
+  @media screen and (max-width: 950px) {
+    .info-phone {
+      font-size: 1em;
+      font-weight: bold; } }
+  @media screen and (max-width: 600px) {
+    .info-phone {
+      font-size: 0.7em;
+      font-weight: bold; } }
+  @media screen and (max-width: 411px) {
+    .info-phone {
+      font-size: 0.7em; } }
 
 .info-img {
   width: 25em;
   display: block;
   margin: auto; }
+  @media screen and (max-width: 950px) {
+    .info-img {
+      width: 20em; } }
+  @media screen and (max-width: 600px) {
+    .info-img {
+      width: 17em; } }
 
 .info-link {
   margin-top: 10px;
   font-size: 1.5em; }
+  @media screen and (max-width: 950px) {
+    .info-link {
+      font-size: 1.2em; } }
+  @media screen and (max-width: 600px) {
+    .info-link {
+      font-size: 1em; } }
 
 .material-icons {
   display: inline; }

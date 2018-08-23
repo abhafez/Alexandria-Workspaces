@@ -2,24 +2,17 @@ nav {
   background: $darker;
   height: 100%;
   padding-top: 1.25em;
-  .logo {
+  @media screen and (max-width: 22.5em) {
+    padding-top: 0em;
+  }
+  .logo-img { // Image logo
     display: block;
-    width: 15.625em;
+    width: 12.5em;
     margin: auto;
     transition: width;
     transition-duration: 0.7s;
-    @media screen and (max-width: $break-larger) {
-      border-radius: 0.313em 0.313em 0.313em 0.313em;
-      width: 13.125em;
-    }
-    @media screen and (max-width: 60.625em) {
-      width: 10em;
-    }
-    @media screen and (max-width: 45.625em) {
-      width: 6.25em;
-    }
-    @media screen and (max-width: 45.625em) {
-      width: 6.25em;
+    @media screen and (max-width: 22.5em) {
+      width: 100px;
     }
   }
   ul {
@@ -41,22 +34,6 @@ nav {
       transition: font-size 1s;
       .selected {
         background-color: darken($darker, 30%)
-      }
-      @media screen and (max-width: $break-larger) {
-        border-radius: 0.313em 0.313em 0.313em 0.313em;
-        font-size: 0.9em;
-      }
-      @media screen and (max-width: $break-large) {
-        font-size: 0.7em;
-      }
-      @media screen and (max-width: $break-medium) {
-        font-size: 0.7em;
-      }
-      @media screen and (max-width: $break-small) {
-        font-size: 0.6em;
-      }
-      @media screen and (max-width: $break-tiny) {
-        font-size: 0.5em;
       }
     }
   }
@@ -165,4 +142,7 @@ h2 {
   text-align: center;
   font-size: 3em;
   transition: font-size 1s;
+  @media screen and (max-width: 22.5em) {
+    font-size: 1em;
+  }
 }

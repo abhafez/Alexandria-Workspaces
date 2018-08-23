@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 
+
 export class MapContainer extends Component {
   state = {
     showingInfoWindow: false,
@@ -25,7 +26,8 @@ export class MapContainer extends Component {
       this.setState({
         showingInfoWindow: false,
         activeMarker: null,
-        placeToBounce: [{}]
+        placeToBounce: [{}],
+        iconSize : 64
       })
     }
   };
@@ -49,10 +51,9 @@ export class MapContainer extends Component {
   
   fitMapSize = () => {
     let screenSize = window.innerWidth;
-    screenSize <= 411 ? this.setState({ mapSize: 12 }) :
-    (screenSize >= 1200) ? this.setState({ mapSize: 13 }) :
-      this.setState({ mapSize: 12 })
-    console.log(this.state.mapSize)
+    screenSize <= 411 ? this.setState({ mapSize: 12, iconSize: 32 }) :
+    (screenSize >= 1200) ? this.setState({ mapSize: 13, iconSize: 64 }) :
+      this.setState({ mapSize: 12, iconSize: 32})
   }
   render() {
     //This style is used for the <Map></Map> inside only
@@ -88,7 +89,7 @@ export class MapContainer extends Component {
             link={location.page}
             photo={location.image}
             icon={{
-              url: "./images/location64.png"
+              url: `./images/location${this.state.iconSize}.png`
             }}
             position={{ lat: location.lat, lng: location.lng }}  />
         ))}
@@ -97,13 +98,13 @@ export class MapContainer extends Component {
         <InfoWindow
           marker={activeMarker}
           visible={showingInfoWindow}>
-          <div className="infoWindow">
-            <h3 className ="info-title">{selectedPlace.name}</h3>
-            <p className= "info-address"><i className="material-icons">location_on</i>{selectedPlace.address}</p>
-            <p className="info-phone"><i className="material-icons">phone</i>{selectedPlace.phone}</p>
-            <img className="info-img" src={selectedPlace.photo} alt=""/>
-            <div className="info-link"><a className="info-link" href={selectedPlace.link}>Visit page</a></div>
-          </div>
+            <div className="infoWindow">
+              <h3 className ="info-title">{selectedPlace.name}</h3>
+              <p className= "info-address"><i className="material-icons">location_on</i>{selectedPlace.address}</p>
+              <p className="info-phone"><i className="material-icons">phone</i>{selectedPlace.phone}</p>
+              <img className="info-img" src={selectedPlace.photo} alt=""/>
+              <div className="info-link"><a className="info-link" href={selectedPlace.link}>Visit page</a></div>
+            </div>
         </InfoWindow>
       </Map>
     )

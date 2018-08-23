@@ -41,7 +41,7 @@ class App extends Component {
     
     return (
       <div id="container">
-        <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+        <a className="skip-link screen-reader-text" href="#content">Skip to content</a>
         <TitleBar />
         <Sidebar
           workspaces={workspaces}

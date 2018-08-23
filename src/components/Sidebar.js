@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
 import logo from '../images/logo.png'
 import '../styles/styles.css'
-import escapeRegExp from "escape-string-regexp";
+import escapeRegExp from "escape-string-regexp"
+import ReactFitText from 'react-fittext'
 
 class Sidebar extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       query: '',
@@ -12,7 +13,6 @@ class Sidebar extends Component {
     }
     this.submitIt = this.submitIt.bind(this)
   }
-  
 
   // Search action
   updateQuery = (query) => {
@@ -35,7 +35,7 @@ class Sidebar extends Component {
       return false;
     }, false);
   }
-  
+
   render() {
 
     const {workspaces} = this.props
@@ -53,44 +53,39 @@ class Sidebar extends Component {
       return workspacesToShow
     }
 
-
-
     return (
-      <nav id='sidebar'>
-        <div className="grid-logo">
-          <h1 className="sidebar-element">Alexandria Workspaces</h1>
-          <img id="logo-img" className="logo-img sidebar-element" src={logo} alt="workspaces in Alex"/>
-          <p className="slogan sidebar-element">Find your workspace</p>
-          <p className="slogan sidebar-element">
-            get out of your comfort zone</p>
-        </div>
-        <div id="search-box" className='search-area sidebar-element'>
-          <section className="search-box">
-            <form>
-              <input
-                id="textField"
-                type="search"
-                onSubmit={()=> this.submitIt()}
-                placeholder="Find workspace .."
-                onChange={(event) => {
-                  this.updateQuery(event.target.value)
-                  this.props.onSearch(event.target.value)
-                }}></input>
-            </form>
-          </section>
-        </div>
-        <ul className='sidebar-element'>
-          {
-            shownWorkspaces().map((workspace) => (<li key={workspace.id} className='' onClick={(event) => {
-                (() => this.props.onSelection(workspace.id))(this.assignSelected(workspace.id))
-                event.target.classList.toggle('selected')
-              }}>
-              {workspace.name}
-            </li>))
-          }
-        </ul >
-      </nav>
-    );
+      <ReactFitText compressor={2}>
+        <nav id='sidebar'>
+          <div className="grid-logo">
+            <h1 className="sidebar-element">Alexandria Workspaces</h1>
+            <img id="logo-img" className="logo-img sidebar-element" src={logo} alt="workspaces in Alex"/>
+            <p className="slogan sidebar-element">Find your workspace</p>
+            <p className="slogan sidebar-element">
+              get out of your comfort zone</p>
+          </div>
+          <div id="search-box" className='search-area sidebar-element'>
+            <section className="search-box">
+              <form>
+                <input id="textField" type="search" onSubmit={() => this.submitIt()} placeholder="Find workspace .." onChange={(event) => {
+                    this.updateQuery(event.target.value)
+                    this.props.onSearch(event.target.value)
+                  }}></input>
+              </form>
+            </section>
+          </div>
+          <ul className='sidebar-element'>
+            {
+              shownWorkspaces().map((workspace) => (<li key={workspace.id} className='' onClick={(event) => {
+                  (() => this.props.onSelection(workspace.id))(this.assignSelected(workspace.id))
+                  event.target.classList.toggle('selected')
+                }}>
+                {workspace.name}
+              </li>))
+            }
+          </ul>
+        </nav>
+    </ReactFitText>
+  );
   }
 }
 
