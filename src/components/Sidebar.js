@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Fragment, Component} from 'react'
 import logo from '../images/logo.png'
 import '../styles/styles.css'
 import escapeRegExp from "escape-string-regexp"
@@ -54,6 +54,7 @@ class Sidebar extends Component {
     }
 
     return (
+      <ReactFitText compressor={6}>
         <nav id='sidebar'>
           <div className="grid-logo">
             <img id="logo-img" className="logo-img sidebar-element" src={logo} alt="workspaces in Alex"/>
@@ -65,25 +66,37 @@ class Sidebar extends Component {
             <div id="search-box" className='search-area sidebar-element'>
               <section className="search-box">
                 <form>
-                  <input id="textField" type="search" onSubmit={() => this.submitIt()} placeholder="Find workspace .." onChange={(event) => {
+                  <input
+                    id="textField"
+                    role="searchbox"
+                    type="search"
+                    onSubmit={() => this.submitIt()}
+                    placeholder="Find workspace .."
+                    onChange={(event) => {
                       this.updateQuery(event.target.value)
                       this.props.onSearch(event.target.value)
-                    }}></input>
+                    }}>
+                  </input>
                 </form>
               </section>
             </div>
             <ul className='sidebar-element'>
               {
-                shownWorkspaces().map((workspace) => (<li key={workspace.id} className='' onClick={(event) => {
-                    (() => this.props.onSelection(workspace.id))(this.assignSelected(workspace.id))
-                    event.target.classList.toggle('selected')
-                  }}>
-                  {workspace.name}
-                </li>))
+                shownWorkspaces().map((workspace) => (
+                  <Fragment key={workspace.id}>
+                    <li onClick={(event) => {
+                      (() => this.props.onSelection(workspace.id))(this.assignSelected(workspace.id))
+                      event.target.classList.toggle('selected')
+                    }}>
+                      {workspace.name}
+                    </li>
+                  </Fragment>
+                ))
               }
             </ul>
         </div>
         </nav>
+      </ReactFitText>
   );
   }
 }

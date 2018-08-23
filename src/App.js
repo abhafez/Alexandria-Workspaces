@@ -48,7 +48,7 @@ class App extends Component {
           onSelection={this.selectWorkspace}
           onSearch={this.getMatchQuery}
         />
-        <main>
+      <main role="main">
           <Maps
             workspaces = {workspacesToShow}
             selectedWorkspace = {selectedWorkspace}

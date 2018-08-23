@@ -35,6 +35,9 @@ nav {
       .selected {
         background-color: darken($darker, 30%)
       }
+      @media screen and (max-width: 600px) {
+        font-size: 2em;
+      }
     }
   }
 }
@@ -67,9 +70,17 @@ nav {
       height: 3em;
       margin: 0;
       padding: 0 0.625em;
-      width: 12em;
-      transition: width;
-      transition-duration: 0.3s;
+      width: 15em;
+      // transition: width;
+      // transition-duration: 0.1s;
+      @media screen and (max-width: 950px) {
+        font-size: 1em;
+      }
+      @media screen and (max-width: 600px) {
+        width: 25em;
+        height: 5em;
+        font-size: 1.5em;
+      }
     }
     input::-webkit-input-placeholder {
       color: $input-field;
@@ -100,9 +111,6 @@ nav {
       padding: 0;
       position: relative;
       width: 35px;
-      @media screen and (max-width: $break-larger) {
-        display: none;
-      }
     }
     :hover,
     :focus {
@@ -137,16 +145,9 @@ nav {
   margin-top: -2.5em;
 }
 
-h1,
-h2 {
-  font-family: 'Indie Flower', cursive;
-  color: $pale-white;
-  text-align: center;
-  font-size: 3em;
-  transition: font-size 1s;
-  margin: 0;
-  display: inline-block;
-  @media screen and (max-width: 22.5em) {
-    font-size: 1em;
+.grid-logo {
+  margin: auto;
+  @media screen and (max-width: 600px) {
+    display: none;
   }
 }

@@ -11,3 +11,30 @@
 .title-bar .material-icons {
   cursor: pointer;
 }
+
+h1,
+h2 {
+  font-family: 'Indie Flower', cursive;
+  color: $pale-white;
+  text-align: center;
+  font-size: 1.5em;
+  transition: font-size 1s;
+  margin: 0;
+  margin-top: 0.1em;
+  display: inline-block;
+  @media screen and (max-width: 950px) {
+    font-size: 3em;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 4em;
+  }
+}
+
+#logo-text {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#toggler {
+  float: left;
+}

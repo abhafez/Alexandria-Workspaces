@@ -40,12 +40,12 @@ export class MapContainer extends Component {
   
   // Map size responsive design purpose
   componentDidMount() {
-    let titleBarHeight = document.getElementById('title-bar').innerHeight
-    console.log(titleBarHeight)
-    let mapSecondDiv = document.getElementsByTagName('main');
-    // ${window.innerHeight - 20*16}px
-    mapSecondDiv[0].childNodes[0].childNodes[0].style.height = `569.7px`
-    
+    // let titleBarHeight = document.getElementById('title-bar').innerHeight
+    // console.log(titleBarHeight)
+    // let mapSecondDiv = document.getElementsByTagName('main');
+    // // ${window.innerHeight - 20*16}px
+    // mapSecondDiv[0].childNodes[0].childNodes[0].style.height = `569.7px`
+    //
     window.addEventListener('resize', this.fitMapSize, false)
     window.addEventListener('load', this.fitMapSize, false);
   }
@@ -100,11 +100,13 @@ export class MapContainer extends Component {
           marker={activeMarker}
           visible={showingInfoWindow}>
             <div className="infoWindow">
-              <h3 className ="info-title">{selectedPlace.name}</h3>
+              <h3 className ="info-title" role="heading">{selectedPlace.name}</h3>
               <p className= "info-address"><i className="material-icons">location_on</i>{selectedPlace.address}</p>
               <p className="info-phone"><i className="material-icons">phone</i>{selectedPlace.phone}</p>
               <img className="info-img" src={selectedPlace.photo} alt=""/>
-              <div className="info-link"><a className="info-link" href={selectedPlace.link}>Visit page</a></div>
+              <div className="info-link">
+                <a role="link" className="info-link" href={selectedPlace.link}>Visit page</a>
+              </div>
             </div>
         </InfoWindow>
       </Map>

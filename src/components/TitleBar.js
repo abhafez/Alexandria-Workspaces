@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import MaterialIcon from 'material-icons-react'
+import ReactFitText from 'react-fittext'
+
 
 class TitleBar extends Component {
   constructor(props) {
@@ -59,9 +61,11 @@ class TitleBar extends Component {
         <span id='toggler' aria-expanded="true" onClick={this.hideShowMenu}>
           <MaterialIcon icon="menu" invert size='medium' className='toggle-nav-btn'/>
         </span>
-        <div id="logo-te">
-          <h1 className="sidebar-element">Alexandria Workspaces</h1>
-        </div>
+        <ReactFitText compressor={6}>
+          <div id="logo-text">
+            <h1 className="sidebar-element">Alexandria Workspaces</h1>
+          </div>
+      </ReactFitText>
     </div>
     );
   }
