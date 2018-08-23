@@ -65,9 +65,6 @@ class TitleBar extends Component {
         <span id='toggler' aria-expanded="true" onClick={this.hideShowMenu}>
           <MaterialIcon icon="menu" invert size='medium' className='toggle-nav-btn'/>
         </span>
-        <div className="logo-container">
-          <h1 className="logo" id='logo'>Alexandria Workspaces</h1>
-        </div>
     </div>
     );
   }

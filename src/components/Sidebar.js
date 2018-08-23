@@ -54,7 +54,7 @@ class Sidebar extends Component {
     }
 
     return (
-      <ReactFitText compressor={2}>
+
         <nav id='sidebar'>
           <div className="grid-logo">
             <h1 className="sidebar-element">Alexandria Workspaces</h1>
@@ -73,7 +73,7 @@ class Sidebar extends Component {
               </form>
             </section>
           </div>
-          <ul className='sidebar-element'>
+          <ul id="search-results" className='sidebar-element'>
             {
               shownWorkspaces().map((workspace) => (<li key={workspace.id} className='' onClick={(event) => {
                   (() => this.props.onSelection(workspace.id))(this.assignSelected(workspace.id))
@@ -84,7 +84,8 @@ class Sidebar extends Component {
             }
           </ul>
         </nav>
-    </ReactFitText>
+    //           <ReactFitText compressor={2}>
+    // </ReactFitText>
   );
   }
 }

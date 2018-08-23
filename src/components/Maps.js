@@ -53,7 +53,7 @@ export class MapContainer extends Component {
     let screenSize = window.innerWidth;
     screenSize <= 411 ? this.setState({ mapSize: 12, iconSize: 32 }) :
     (screenSize >= 1200) ? this.setState({ mapSize: 13, iconSize: 64 }) :
-      this.setState({ mapSize: 12, iconSize: 32})
+      this.setState({ mapSize: 13, iconSize: 32})
   }
   render() {
     //This style is used for the <Map></Map> inside only
@@ -63,7 +63,7 @@ export class MapContainer extends Component {
     }
     
     const { workspaces, google} = this.props
-    const { placeToBounce, selectedPlace, showingInfoWindow, activeMarker, mapSize} = this.state
+    const { placeToBounce, selectedPlace, showingInfoWindow, activeMarker, mapSize, iconSize} = this.state
     
 
     return (
@@ -89,7 +89,7 @@ export class MapContainer extends Component {
             link={location.page}
             photo={location.image}
             icon={{
-              url: `./images/location${this.state.iconSize}.png`
+              url: `./images/location${iconSize}.png`
             }}
             position={{ lat: location.lat, lng: location.lng }}  />
         ))}
