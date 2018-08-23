@@ -1,18 +1,18 @@
 CRITERIA:
 MEETS SPECIFICATIONS:
   Responsiveness:
-  ☐ All application components render on-screen in a responsive manner.
+  ✔ All application components render on-screen in a responsive manner. @done(2018-08-23 22:38) @project(MEETS SPECIFICATIONS)
   Usability:
-    ☐ All application components are usable across modern desktop, tablet, and phone browsers.
+    ✔ All application components are usable across modern desktop, tablet, and phone browsers. @done(2018-08-23 22:38) @project(MEETS SPECIFICATIONS / Usability)
   Application Functionality:
   Location Filter:
-    ☐ Includes a text input field or dropdown menu that filters the map markers and list items to locations matching the text input or selection. Filter function runs error-free.
+    ✔ Includes a text input field or dropdown menu that filters the map markers and list items to locations matching the text input or selection. Filter function runs error-free. @done(2018-08-23 22:38) @project(MEETS SPECIFICATIONS / Location Filter)
   List View:
     ☐ A list-view of location names is provided which displays all locations by default, and displays the filtered subset of locations when a filter is applied.
     ☐ Clicking a location on the list displays unique information about the location, and animates its associated map marker (e.g. bouncing, color change.)
     ☐ List functionality is responsive and runs error free.
   Map and Markers:
-    ☐ Map displays all location markers by default, and displays the filtered subset of location markers when a filter is applied.
+    ✔ Map displays all location markers by default, and displays the filtered subset of location markers when a filter is applied. @done(2018-08-23 22:38) @project(MEETS SPECIFICATIONS / Map and Markers)
     ☐ Clicking a marker displays unique information about a location somewhere on the page (modal, separate div, inside an infoWindow).
     ☐ Any additional custom functionality provided in the app functions error-free.
   Asynchronous Data Usage:
@@ -23,9 +23,9 @@ MEETS SPECIFICATIONS:
     ☐ Data requests that fail are handled gracefully using common fallback techniques (i.e. AJAX error or fail methods). 'Gracefully' means the user isn’t left wondering why a component isn’t working. If an API doesn’t load there should be some visible indication on the page that it didn’t load.
   Documentation:
   README:
-    ☐ A README file is included detailing all steps required to successfully run the application.
+    ✔ A README file is included detailing all steps required to successfully run the application. @done(2018-08-23 22:38) @project(MEETS SPECIFICATIONS / README)
   Comments:
-    ☐ Comments are present and effectively explain longer code procedures.
+    ✔ Comments are present and effectively explain longer code procedures. @done(2018-08-23 22:37) @project(MEETS SPECIFICATIONS / Comments)
   Location Details Functionality:
   Additional Location Data:
     ☐ Functionality providing additional data about a location is provided and sourced from a 3rd party API. Information can be provided either in the marker’s infoWindow, or in an HTML element in the DOM (a sidebar, the list view, a modal, etc.)
@@ -33,7 +33,7 @@ MEETS SPECIFICATIONS:
   Error Free:
     ☐ Application runs without console errors
   Usability:
-    ☐ Functionality is presented in a usable and responsive manner.
+    ✔ Functionality is presented in a usable and responsive manner. @done(2018-08-23 22:37) @project(MEETS SPECIFICATIONS / Usability)
   Accessibility:
   Focus:
     ☐ Focus is appropriately managed allowing users to noticeably tab through each of the important elements of the page. Modal or interstitial windows appropriately lock focus.
@@ -43,9 +43,9 @@ MEETS SPECIFICATIONS:
     ☐ All content-related images include appropriate alternate text that clearly describes the content of the image.
   Offline Use:
   Service Worker:
-    ☐ When available in the browser, the site uses a service worker to cache responses to requests for site assets. Visited pages are rendered when there is no network access.
+    ✔ When available in the browser, the site uses a service worker to cache responses to requests for site assets. Visited pages are rendered when there is no network access. @done(2018-08-23 22:36) @project(MEETS SPECIFICATIONS / Service Worker)
   Application Architecture:
   Proper Use of React:
-    ☐ React code follows a reasonable component structure.
-    ☐ State control is managed appropriately: event handlers are passed as props to child components, and state is managed by parent component functions when appropriate.
-    ☐ There are at least 5 locations in the model. These may be hard-coded or retrieved from a data API.
+    ✔ React code follows a reasonable component structure. @done(2018-08-23 22:36) @project(MEETS SPECIFICATIONS / Proper Use of React)
+    ✔ State control is managed appropriately: event handlers are passed as props to child components, and state is managed by parent component functions when appropriate. @done(2018-08-23 22:36) @project(MEETS SPECIFICATIONS / Proper Use of React)
+    ✔ There are at least 5 locations in the model. These may be hard-coded or retrieved from a data API. @done(2018-08-23 22:36) @project(MEETS SPECIFICATIONS / Proper Use of React)

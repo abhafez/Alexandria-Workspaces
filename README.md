@@ -9,10 +9,16 @@ It came while I was searching for a place to do this project. Actually I wrote e
 
 To get started viewing the project
 
-* install all project dependencies with `npm install`
-* start the development server with `npm start`
-* if you're a yarn fan start using `yarn start`
+* Install all project dependencies with `npm install`
+* Start the development server with `npm start`
+* If you're a yarn fan start using `yarn start`
+* Open in your browser `http://localhost:3000/`
 
+# Service Worker
+It is implemented only in the production build
+* To build this project run `npm run build`
+* To launch the build `serve -s build`
+* Open in your browser `http://localhost:5000/`
 ## Styling
 
 * I used SASS and gulp to complie
