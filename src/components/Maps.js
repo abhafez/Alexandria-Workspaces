@@ -74,6 +74,7 @@ export class MapContainer extends Component {
   
   gm_authFailure() {
     window.alert("Google Maps error!")
+    document.getElementById('map').context('Google Maps Error!')
   }
   render() {
     //This style is used for the <Map></Map> inside only

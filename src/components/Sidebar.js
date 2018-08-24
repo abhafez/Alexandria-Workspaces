@@ -66,6 +66,7 @@ class Sidebar extends Component {
               <section className="search-box">
                 <form>
                   <input
+                    tabIndex='1'
                     id="textField"
                     role="searchbox"
                     type="search"
@@ -83,7 +84,7 @@ class Sidebar extends Component {
               {
                 shownWorkspaces().map((workspace) => (
                   <Fragment key={workspace.id}>
-                    <li onClick={(event) => {
+                    <li tabIndex="2" onClick={(event) => {
                       (() => this.props.onSelection(workspace.id))(this.assignSelected(workspace.id))
                       event.target.classList.toggle('selected')
                     }}>
