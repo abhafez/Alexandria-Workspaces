@@ -8,7 +8,8 @@ export class MapContainer extends Component {
     activeMarker: {},
     selectedPlace: {},
     placeToBounce: [{}],
-    mapSize : 13
+    mapSize : 13,
+    iconName: 'cl'
   };
 
   onMarkerClick = (props, marker, e) => {
@@ -40,14 +41,9 @@ export class MapContainer extends Component {
   
   // Map size responsive design purpose
   componentDidMount() {
-    // let titleBarHeight = document.getElementById('title-bar').innerHeight
-    // console.log(titleBarHeight)
-    // let mapSecondDiv = document.getElementsByTagName('main');
-    // // ${window.innerHeight - 20*16}px
-    // mapSecondDiv[0].childNodes[0].childNodes[0].style.height = `569.7px`
-    //
     window.addEventListener('resize', this.fitMapSize, false)
-    window.addEventListener('load', this.fitMapSize, false);
+    window.addEventListener('load', this.fitMapSize, false)
+    window.gm_authFailure = this.gm_authFailure
   }
   
   fitMapSize = () => {
@@ -55,6 +51,10 @@ export class MapContainer extends Component {
     screenSize <= 411 ? this.setState({ mapSize: 12, iconSize: 32 }) :
     (screenSize >= 1200) ? this.setState({ mapSize: 13, iconSize: 64 }) :
       this.setState({ mapSize: 13, iconSize: 32})
+  }
+  
+  gm_authFailure() {
+    window.alert("Google Maps error!")
   }
   render() {
     //This style is used for the <Map></Map> inside only
@@ -66,7 +66,13 @@ export class MapContainer extends Component {
     const { workspaces, google} = this.props
     const { placeToBounce, selectedPlace, showingInfoWindow, activeMarker, mapSize, iconSize} = this.state
     
-
+    const defaultIcon = {
+        url: `./images/cl${iconSize}.png`,
+    };
+     const highlightedIcon = {
+        url:  `./images/rl${iconSize}.png`,
+    };
+        
     return (
       <Map
         google={google}
@@ -81,17 +87,19 @@ export class MapContainer extends Component {
         {workspaces.map((location) => (
           <Marker
             onClick={this.onMarkerClick}
+            key={location.name}
             animation={(placeToBounce[0]['name'] === location.name)
               && google.maps.Animation.BOUNCE}
-            title={'The marker`s title will appear as a tooltip.'}
+            title={'The markers title will appear as a tooltip.'}
             name={location.name}
             phone={location.phone}
             address={location.address}
             link={location.page}
             photo={location.image}
-            icon={{
-              url: `./images/location${iconSize}.png`
-            }}
+            icon={
+              placeToBounce[0]['name'] !== location.name?
+              defaultIcon : highlightedIcon
+            }
             position={{ lat: location.lat, lng: location.lng }}  />
         ))}
         {/* for UX the same icon included 64 & 32 */}
@@ -100,12 +108,12 @@ export class MapContainer extends Component {
           marker={activeMarker}
           visible={showingInfoWindow}>
             <div className="infoWindow">
-              <h3 className ="info-title" role="heading">{selectedPlace.name}</h3>
+              <h3 className ="info-title">{selectedPlace.name}</h3>
               <p className= "info-address"><i className="material-icons">location_on</i>{selectedPlace.address}</p>
               <p className="info-phone"><i className="material-icons">phone</i>{selectedPlace.phone}</p>
-              <img className="info-img" src={selectedPlace.photo} alt=""/>
+              <img className="info-img" src={selectedPlace.photo} alt={selectedPlace.name} />
               <div className="info-link">
-                <a role="link" className="info-link" href={selectedPlace.link}>Visit page</a>
+                <a className="info-link" href='{selectedPlace.link}'>Visit page</a>
               </div>
             </div>
         </InfoWindow>
@@ -115,5 +123,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: ('AIzaSyAHU00QUEXigecU9sB3QrG1hl7kfT97lXg')
+  apiKey: ('AIzaSyCA1Ssnu1-w0jQV3YceDhfcxMuTTr9oSlQ')
 })(MapContainer)

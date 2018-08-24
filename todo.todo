@@ -40,7 +40,7 @@ MEETS SPECIFICATIONS:
   Site elements are defined semantically:
     ☐ Elements on the page use the appropriate semantic elements. For those elements in which a semantic element is not available, appropriate ARIA roles are defined.
   Accessible Images:
-    ☐ All content-related images include appropriate alternate text that clearly describes the content of the image.
+    ✔ All content-related images include appropriate alternate text that clearly describes the content of the image. @done(2018-08-23 22:55) @project(MEETS SPECIFICATIONS / Accessible Images)
   Offline Use:
   Service Worker:
     ✔ When available in the browser, the site uses a service worker to cache responses to requests for site assets. Visited pages are rendered when there is no network access. @done(2018-08-23 22:36) @project(MEETS SPECIFICATIONS / Service Worker)
