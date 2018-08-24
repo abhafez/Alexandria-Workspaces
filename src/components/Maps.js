@@ -4,12 +4,12 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 
 export class MapContainer extends Component {
   state = {
-    showingInfoWindow: false,
+    mapSize : 13,
+    iconName: 'cl',
     activeMarker: {},
     selectedPlace: {},
     placeToBounce: [{}],
-    mapSize : 13,
-    iconName: 'cl',
+    showingInfoWindow: false,
     currentLocationAdress: ''
   };
 
@@ -76,6 +76,7 @@ export class MapContainer extends Component {
     window.alert("Google Maps error!")
     document.getElementById('map').context('Google Maps Error!')
   }
+    
   render() {
     //This style is used for the <Map></Map> inside only
     const style = {
@@ -93,7 +94,7 @@ export class MapContainer extends Component {
         url:  `./images/rl${iconSize}.png`,
     };
 
-    
+
     return (
       <Map
         google={google}
@@ -142,7 +143,10 @@ export class MapContainer extends Component {
     )
   }
 }
-
+const LoadingContainer = (props) => (
+  <main class="loader"></main>
+)
 export default GoogleApiWrapper({
-  apiKey: ('AIzaSyCA1Ssnu1-w0jQV3YceDhfcxMuTTr9oSlQ')
+  apiKey: ('AIzaSyCA1Ssnu1-w0jQV3YceDhfcxMuTTr9oSlQ'),
+  LoadingContainer: LoadingContainer
 })(MapContainer)

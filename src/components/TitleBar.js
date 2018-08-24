@@ -10,7 +10,6 @@ class TitleBar extends Component {
       hiddenByClick: false
     };
     this.toggleBarVisibility = this.toggleBarVisibility.bind(this)
-    // this.sideBarVisibility = this.sideBarVisibility.bind(this)
     this.hideShowMenu = this.hideShowMenu.bind(this)
   }
 
@@ -18,18 +17,6 @@ class TitleBar extends Component {
     window.onload = this.sideBarVisibility;
     window.addEventListener('resize', this.sideBarVisibility)
   }
-
-  // sideBarVisibility() {
-  //   if (
-  //     window.innerWidth <= 770 &&
-  //     !document.getElementById('sidebar').classList.contains('hidden')) {
-  //     return this.toggleBarVisibility()
-  //   } else if (this.state.hiddenByClick !== true &&
-  //     window.innerWidth > 770 &&
-  //     document.getElementById('sidebar').classList.contains('hidden')) {
-  //     return this.toggleBarVisibility()
-  //   }
-  // }
 
   toggleBarVisibility() {
     // Accessibility related

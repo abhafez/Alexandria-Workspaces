@@ -80,11 +80,11 @@ class Sidebar extends Component {
                 </form>
               </section>
             </div>
-            <ul className='sidebar-element'>
+            <ul role="list" className='sidebar-element'>
               {
                 shownWorkspaces().map((workspace) => (
                   <Fragment key={workspace.id}>
-                    <li tabIndex="2" onClick={(event) => {
+                    <li role='listitem' tabIndex="2" onClick={(event) => {
                       (() => this.props.onSelection(workspace.id))(this.assignSelected(workspace.id))
                       event.target.classList.toggle('selected')
                     }}>
