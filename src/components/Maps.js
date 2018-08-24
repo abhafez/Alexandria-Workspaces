@@ -9,17 +9,36 @@ export class MapContainer extends Component {
     selectedPlace: {},
     placeToBounce: [{}],
     mapSize : 13,
-    iconName: 'cl'
+    iconName: 'cl',
+    currentLocationAdress: ''
   };
 
   onMarkerClick = (props, marker, e) => {
+    let clientID = '2EDBBXP0TYVB5GKNTS4SOXIY4UNKOA0Q2DQAF4ZR2K5LRY03';
+    let clientSecret = 'QA1ER5FS53NOKMUUKUC4TRO4UXTVA53CBE2VNSKWOFJGH4WH';
+    console.log(props.position.lat);
+    fetch(`https://api.foursquare.com/v2/venues/search?client_id=${clientID}&client_secret=${clientSecret}&v=20180323&ll=${props.position.lat},${props.position.lng}&limit=1`)
+    .then((response) => {
+      if (response.status === 200) {
+        console.log(response)
+      }
+      response.json().then((data) => {
+        console.log(data.response.venues[0].location.address);
+        document.querySelector('.info-address').innerHTML = data.response.venues[0].location.address
+        // it works but I don't need it (Our places are not rich with data on foursquare)
+        });
+      }
+    ).catch((err) => {
+        console.log("Something Wrong");
+        // the included address in the json file will just appear
+    });
+    
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       placeToBounce: [props],
       showingInfoWindow: true
     })
-    console.log(props);
   };
 
   onMapClicked = (props) => {
@@ -72,7 +91,8 @@ export class MapContainer extends Component {
      const highlightedIcon = {
         url:  `./images/rl${iconSize}.png`,
     };
-        
+
+    
     return (
       <Map
         google={google}

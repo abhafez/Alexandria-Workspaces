@@ -46,7 +46,6 @@ class Sidebar extends Component {
       if (query) {
         const match = new RegExp(escapeRegExp(query), 'i')
         workspacesToShow = workspaces.filter((workspace) => match.test(workspace.name))
-        console.log(workspacesToShow)
       } else {
         workspacesToShow = workspaces
       }

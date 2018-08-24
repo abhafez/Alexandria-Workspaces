@@ -21,32 +21,42 @@
   },
   {
     "id": 3,
-    "name": "EDZone Co-working Space",
-    "address": "11 Abd Al Rahman Al Naseri, Abu an Nawatir, Qism Sidi Gabir",
-    "lat": 31.22514139999999,
-    "lng": 29.949013199999968,
-    "phone": "0114 400 9773",
-    "page": "http://www.m3mal.com/",
-    "image": "./images/workspaces/edzone.jpg"
+    "name": "GULFSIP",
+    "address": "5 fawzy moaaz St; (smouha)",
+    "lat": 31.2134965,
+    "lng": 29.9354191,
+    "phone": "03 4281457",
+    "page": "https://twitter.com/gulfsip",
+    "image": "./images/workspaces/gulfsip.jpg"
   },
   {
     "id": 4,
     "name": "Workstation Coworking Space",
     "address": "El-Fardous, Ezbet Saad, Qism Sidi Gabir",
-    "lat": 31.2093754,
-    "lng": 29.95040419999998,
+    "lat": 31.2090345,
+    "lng": 29.9512055,
     "phone": "03 4241194",
     "page": "http://www.workstation-eg.co/",
     "image": "./images/workspaces/workstation.jpg"
   },
   {
     "id": 5,
-    "name": "Balance Co Working Space",
-    "address": "28 Taghour, Al Azaritah WA Ash Shatebi, Qesm Bab Sharqi",
-    "lat": 31.2044349,
-    "lng": 29.907819399999994,
-    "phone": "0101 193 9355",
-    "page": "",
+    "name": "Anna Lindh Foundation",
+    "address": "Third Floor, Conference Centre, Bibliotheca Alexandrina",
+    "lat": 31.2089627,
+    "lng": 29.9088067,
+    "phone": "0101 193 87887",
+    "page": "http://www.annalindhfoundation.org/",
     "image": "./images/workspaces/balance.jpg"
+  },
+  {
+    "id": 6,
+    "name": "ITWORX",
+    "address": "3 Bahaa El Din Ghatwary St. (Lotus Business Center) Semouha",
+    "lat": 31.2138913,
+    "lng": 29.9429766,
+    "phone": "0101 193 87887",
+    "page": "http://www.itworx.com/",
+    "image": "./images/workspaces/itworx.jpg"
   }
 ]
