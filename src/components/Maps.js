@@ -135,7 +135,7 @@ export class MapContainer extends Component {
               <p className="info-phone"><i className="material-icons">phone</i>{selectedPlace.phone}</p>
               <img className="info-img" src={selectedPlace.photo} alt={selectedPlace.name} />
               <div className="info-link">
-                <a className="info-link" href='{selectedPlace.link}'>Visit page</a>
+                <a className="info-link" href={selectedPlace.link} target="_blank">Visit page</a>
               </div>
             </div>
         </InfoWindow>

@@ -75,7 +75,8 @@ class Sidebar extends Component {
                     onChange={(event) => {
                       this.updateQuery(event.target.value)
                       this.props.onSearch(event.target.value)
-                    }}>
+                    }
+                  }>
                   </input>
                 </form>
               </section>
