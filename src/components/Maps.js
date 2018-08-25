@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 
-
 export class MapContainer extends Component {
   state = {
     mapSize : 13,
@@ -10,26 +9,24 @@ export class MapContainer extends Component {
     selectedPlace: {},
     placeToBounce: [{}],
     showingInfoWindow: false,
-    currentLocationAdress: ''
+    currentLocationAdress: '', // for foursquare updates
+    mouseEnter: true // Track mouse event
   };
 
   onMarkerClick = (props, marker, e) => {
     let clientID = '2EDBBXP0TYVB5GKNTS4SOXIY4UNKOA0Q2DQAF4ZR2K5LRY03';
     let clientSecret = 'QA1ER5FS53NOKMUUKUC4TRO4UXTVA53CBE2VNSKWOFJGH4WH';
-    console.log(props.position.lat);
     fetch(`https://api.foursquare.com/v2/venues/search?client_id=${clientID}&client_secret=${clientSecret}&v=20180323&ll=${props.position.lat},${props.position.lng}&limit=1`)
     .then((response) => {
       if (response.status === 200) {
-        console.log(response)
       }
       response.json().then((data) => {
-        console.log(data.response.venues[0].location.address);
         document.querySelector('.info-address').innerHTML = data.response.venues[0].location.address
         // it works but I don't need it (Our places are not rich with data on foursquare)
         });
       }
     ).catch((err) => {
-        console.log("Something Wrong");
+        console.warn("Something Wrong With Foursquare data");
         // the included address in the json file will just appear
     });
     
@@ -42,14 +39,12 @@ export class MapContainer extends Component {
   };
 
   onMapClicked = (props) => {
-    if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
         activeMarker: null,
         placeToBounce: [{}],
-        iconSize : 64
+        mouseEnter: true
       })
-    }
   };
   
   componentWillReceiveProps(nextProps) {
@@ -63,6 +58,13 @@ export class MapContainer extends Component {
     window.addEventListener('resize', this.fitMapSize, false)
     window.addEventListener('load', this.fitMapSize, false)
     window.gm_authFailure = this.gm_authFailure
+    
+    // try addEventListener to <li> which is in the sidebar component
+
+    // get
+    window.addEventListener("unhandledrejection", function (event) {
+      console.warn("WARNING: Unhandled promise rejection. Shame on you! Reason: "+ event.reason);
+    });
   }
   
   fitMapSize = () => {
@@ -83,7 +85,7 @@ export class MapContainer extends Component {
       width: '100%',
       height: '100%'
     }
-    
+
     const { workspaces, google} = this.props
     const { placeToBounce, selectedPlace, showingInfoWindow, activeMarker, mapSize, iconSize} = this.state
     
@@ -107,35 +109,37 @@ export class MapContainer extends Component {
         onClick={this.onMapClicked}
       >
         {workspaces.map((location) => (
-          <Marker
-            onClick={this.onMarkerClick}
-            key={location.name}
-            animation={(placeToBounce[0]['name'] === location.name)
-              && google.maps.Animation.BOUNCE}
-            title={'The markers title will appear as a tooltip.'}
-            name={location.name}
-            phone={location.phone}
-            address={location.address}
-            link={location.page}
-            photo={location.image}
-            icon={
-              placeToBounce[0]['name'] !== location.name?
-              defaultIcon : highlightedIcon
-            }
-            position={{ lat: location.lat, lng: location.lng }}  />
-        ))}
+            <Marker
+              onClick={this.onMarkerClick}
+              onMouseover = { placeToBounce[0]['id'] !== location.id ? this.onMouseoverMarker : undefined}
+              key={location.name}
+              animation={(placeToBounce[0]['id'] === location.id && google.maps.Animation.BOUNCE )}
+              title={'The markers title will appear as a tooltip.'}
+              name={location.name}
+              phone={location.phone}
+              address={location.address}
+              link={location.page}
+              photo={location.image}
+              icon={
+                placeToBounce[0]['name'] !== location.name?
+                defaultIcon : highlightedIcon
+              }
+              position={{ lat: location.lat, lng: location.lng }}
+            />
+          ))
+      }
         {/* for UX the same icon included 64 & 32 */}
         {/* NOTE: the last comment crashes code when included inside the Marker tag*/}
         <InfoWindow
           marker={activeMarker}
           visible={showingInfoWindow}>
-            <div className="infoWindow">
-              <h3 className ="info-title">{selectedPlace.name}</h3>
-              <p className= "info-address"><i className="material-icons">location_on</i>{selectedPlace.address}</p>
-              <p className="info-phone"><i className="material-icons">phone</i>{selectedPlace.phone}</p>
-              <img className="info-img" src={selectedPlace.photo} alt={selectedPlace.name} />
+            <div className="infoWindow" tabIndex='2'>
+              <h3 className ="info-title" tabIndex='2'>{selectedPlace.name}</h3>
+              <p className= "info-address" tabIndex='2'><i className="material-icons">location_on</i>{selectedPlace.address}</p>
+              <p className="info-phone" tabIndex='2'><i className="material-icons">phone</i>{selectedPlace.phone}</p>
+              <img className="info-img" src={selectedPlace.photo} tabIndex='2' alt={selectedPlace.name} />
               <div className="info-link">
-                <a className="info-link" href={selectedPlace.link} target="_blank">Visit page</a>
+                <a className="info-link" href={selectedPlace.link} tabIndex='2' target="_blank">Visit page</a>
               </div>
             </div>
         </InfoWindow>
@@ -143,9 +147,11 @@ export class MapContainer extends Component {
     )
   }
 }
+
 const LoadingContainer = (props) => (
-  <main class="loader"></main>
+  <main className="loader"></main>
 )
+
 export default GoogleApiWrapper({
   apiKey: ('AIzaSyCA1Ssnu1-w0jQV3YceDhfcxMuTTr9oSlQ'),
   LoadingContainer: LoadingContainer

@@ -23,7 +23,7 @@ class Sidebar extends Component {
   clearQuery = () => {
     this.setState({query: ''})
   }
-
+  
   assignSelected = (clicked) => {
     this.setState({selected: clicked})
   }
@@ -72,23 +72,37 @@ class Sidebar extends Component {
                     type="search"
                     onSubmit={() => this.submitIt()}
                     placeholder="Find workspace .."
+                    aria-label="Search through workspaces"
                     onChange={(event) => {
                       this.updateQuery(event.target.value)
                       this.props.onSearch(event.target.value)
+                      }
                     }
-                  }>
+                  >
                   </input>
                 </form>
               </section>
             </div>
-            <ul role="list" className='sidebar-element'>
+            <ul
+              role="menu"
+              className='sidebar-element'
+            >
               {
                 shownWorkspaces().map((workspace) => (
                   <Fragment key={workspace.id}>
-                    <li role='listitem' tabIndex="2" onClick={(event) => {
-                      (() => this.props.onSelection(workspace.id))(this.assignSelected(workspace.id))
-                      event.target.classList.toggle('selected')
-                    }}>
+                    <li
+                      role='listitem link'
+                      tabIndex="2"
+                      aria-labelledby="textField"
+                      onClick={(event) => {
+                        (() => this.props.onSelection(workspace.id))(this.assignSelected(workspace.id))
+                        event.target.classList.toggle('selected')
+                    }}
+                    onKeyPress={(event) => {
+                        (() => this.props.onSelection(workspace.id))(this.assignSelected(workspace.id))
+                        event.target.classList.toggle('selected')
+                    }}
+                    >
                       {workspace.name}
                     </li>
                   </Fragment>

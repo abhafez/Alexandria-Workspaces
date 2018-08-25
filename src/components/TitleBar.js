@@ -44,16 +44,25 @@ class TitleBar extends Component {
   }
   render() {
     return (
-      <div className="title-bar" id="title-bar">
-        <span id='toggler' aria-expanded="true" onClick={this.hideShowMenu}>
-          <MaterialIcon icon="menu" invert size='medium' className='toggle-nav-btn'/>
-        </span>
-        <ReactFitText compressor={6}>
-          <div id="logo-text">
-            <h1 className="sidebar-element">Alexandria Workspaces</h1>
-          </div>
-      </ReactFitText>
-    </div>
+      <header>
+        <div className="title-bar" id="title-bar">
+          <span
+            id='toggler'
+            aria-expanded="true"
+            aria-label='Toggle sidebar'
+            role="button"
+            onClick={this.hideShowMenu}
+            tabIndex='1'
+          >
+            <MaterialIcon icon="menu" invert size='medium' className='toggle-nav-btn'/>
+          </span>
+          <ReactFitText compressor={6}>
+            <div id="logo-text">
+              <h1 className="sidebar-element">Alexandria Workspaces</h1>
+            </div>
+        </ReactFitText>
+      </div>
+    </header>
     );
   }
 }
