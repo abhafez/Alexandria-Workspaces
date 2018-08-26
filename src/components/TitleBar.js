@@ -42,6 +42,7 @@ class TitleBar extends Component {
       hiddenByClick: !prevState.hiddenByClick
     }))
   }
+
   render() {
     return (
       <header>
@@ -52,6 +53,7 @@ class TitleBar extends Component {
             aria-label='Toggle sidebar'
             role="button"
             onClick={this.hideShowMenu}
+            onKeyPress={this.hideShowMenu}
             tabIndex='1'
           >
             <MaterialIcon icon="menu" invert size='medium' className='toggle-nav-btn'/>

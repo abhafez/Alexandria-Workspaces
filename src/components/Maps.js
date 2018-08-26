@@ -2,16 +2,24 @@ import React, { Component } from 'react'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 
 export class MapContainer extends Component {
-  state = {
-    mapSize : 13,
-    iconName: 'cl',
-    activeMarker: {},
-    selectedPlace: {},
-    placeToBounce: [{}],
-    showingInfoWindow: false,
-    currentLocationAdress: '', // for foursquare updates
-    mouseEnter: true // Track mouse event
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      mapSize : 13,
+      iconName: 'cl',
+      activeMarker: {},
+      selectedPlace: {},
+      placeToBounce: [{}],
+      showingInfoWindow: true,
+      currentLocationAdress: '', // for foursquare updates
+      markerObjects: []
+    };
+    this.onMarkerMounted = (element) => {
+      this.setState(prevState => ({
+        markerObjects: [...prevState.markerObjects, element.marker]
+      }))
+    };
+  }
 
   onMarkerClick = (props, marker, e) => {
     let clientID = '2EDBBXP0TYVB5GKNTS4SOXIY4UNKOA0Q2DQAF4ZR2K5LRY03';
@@ -29,7 +37,7 @@ export class MapContainer extends Component {
         console.warn("Something Wrong With Foursquare data");
         // the included address in the json file will just appear
     });
-    
+
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -39,46 +47,57 @@ export class MapContainer extends Component {
   };
 
   onMapClicked = (props) => {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null,
-        placeToBounce: [{}],
-        mouseEnter: true
-      })
+    this.setState({
+      showingInfoWindow: false,
+      activeMarker: null,
+      placeToBounce: [{}],
+    })
   };
-  
+
   componentWillReceiveProps(nextProps) {
-      this.setState({
-        placeToBounce: nextProps.selectedWorkspace,
-      })
+    this.state.markerObjects.forEach((marker) => {
+      if (marker.link === nextProps.selectedWorkspace[0].page) {
+        this.setState({
+          activeMarker : marker,
+          showingInfoWindow: true,
+          selectedPlace: nextProps.selectedWorkspace[0],
+          placeToBounce: nextProps.selectedWorkspace,
+        })
+      }
+    })
   }
-  
+
   // Map size responsive design purpose
   componentDidMount() {
     window.addEventListener('resize', this.fitMapSize, false)
     window.addEventListener('load', this.fitMapSize, false)
     window.gm_authFailure = this.gm_authFailure
-    
-    // try addEventListener to <li> which is in the sidebar component
-
-    // get
     window.addEventListener("unhandledrejection", function (event) {
       console.warn("WARNING: Unhandled promise rejection. Shame on you! Reason: "+ event.reason);
     });
   }
-  
+
   fitMapSize = () => {
     let screenSize = window.innerWidth;
     screenSize <= 411 ? this.setState({ mapSize: 12, iconSize: 32 }) :
     (screenSize >= 1200) ? this.setState({ mapSize: 13, iconSize: 64 }) :
       this.setState({ mapSize: 13, iconSize: 32})
   }
-  
+
   gm_authFailure() {
     window.alert("Google Maps error!")
     document.getElementById('map').context('Google Maps Error!')
   }
-    
+
+  findMarkerIndex = (id, markers) => {
+    for (let i = markers.length; i--; ) {
+      if (markers[i].id === id) {
+        return i;
+      }
+    }
+    return null;
+  }
+
   render() {
     //This style is used for the <Map></Map> inside only
     const style = {
@@ -88,11 +107,11 @@ export class MapContainer extends Component {
 
     const { workspaces, google} = this.props
     const { placeToBounce, selectedPlace, showingInfoWindow, activeMarker, mapSize, iconSize} = this.state
-    
-    const defaultIcon = {
+
+    const blueIcon = {
         url: `./images/cl${iconSize}.png`,
     };
-     const highlightedIcon = {
+     const redIcon = {
         url:  `./images/rl${iconSize}.png`,
     };
 
@@ -110,24 +129,24 @@ export class MapContainer extends Component {
       >
         {workspaces.map((location) => (
             <Marker
-              onClick={this.onMarkerClick}
-              onMouseover = { placeToBounce[0]['id'] !== location.id ? this.onMouseoverMarker : undefined}
+              ref={this.onMarkerMounted}
               key={location.name}
-              animation={(placeToBounce[0]['id'] === location.id && google.maps.Animation.BOUNCE )}
+              onClick={this.onMarkerClick}
+              animation={((placeToBounce[0]['id'] === location.id || selectedPlace.id === location.id) && google.maps.Animation.BOUNCE)}
               title={'The markers title will appear as a tooltip.'}
               name={location.name}
               phone={location.phone}
               address={location.address}
               link={location.page}
-              photo={location.image}
+              image={location.image}
               icon={
                 placeToBounce[0]['name'] !== location.name?
-                defaultIcon : highlightedIcon
+                blueIcon : redIcon
               }
               position={{ lat: location.lat, lng: location.lng }}
             />
           ))
-      }
+        }
         {/* for UX the same icon included 64 & 32 */}
         {/* NOTE: the last comment crashes code when included inside the Marker tag*/}
         <InfoWindow
@@ -137,7 +156,7 @@ export class MapContainer extends Component {
               <h3 className ="info-title" tabIndex='2'>{selectedPlace.name}</h3>
               <p className= "info-address" tabIndex='2'><i className="material-icons">location_on</i>{selectedPlace.address}</p>
               <p className="info-phone" tabIndex='2'><i className="material-icons">phone</i>{selectedPlace.phone}</p>
-              <img className="info-img" src={selectedPlace.photo} tabIndex='2' alt={selectedPlace.name} />
+              <img className="info-img" src={selectedPlace.image} tabIndex='2' alt={selectedPlace.name} />
               <div className="info-link">
                 <a className="info-link" href={selectedPlace.link} tabIndex='2' target="_blank">Visit page</a>
               </div>

@@ -33,11 +33,11 @@ class App extends Component {
     }
     this.setState({workspacesToShow: workspacesToShow})
   }
-  
-  
+
+
   render() {
     const { workspaces, selectedWorkspace, workspacesToShow } = this.state
-    
+
     return (
       <div id="container">
         <a className="skip-link screen-reader-text" href="#content">Skip to content</a>

@@ -3,6 +3,7 @@ import logo from '../images/logo.png'
 import '../styles/styles.css'
 import escapeRegExp from "escape-string-regexp"
 import ReactFitText from 'react-fittext'
+import $ from 'jquery'
 
 class Sidebar extends Component {
   constructor(props) {
@@ -11,10 +12,9 @@ class Sidebar extends Component {
       query: '',
       selected: ''
     }
-    this.submitIt = this.submitIt.bind(this)
   }
 
-  // Search action
+  // Update Search query in the state
   updateQuery = (query) => {
     this.setState({query: query})
   }
@@ -23,22 +23,14 @@ class Sidebar extends Component {
   clearQuery = () => {
     this.setState({query: ''})
   }
-  
+
   assignSelected = (clicked) => {
     this.setState({selected: clicked})
   }
 
-  submitIt() {
-    document.getElementById('textField').addEventListener('submit', function(event) {
-      event.preventDefault();
-      alert('hi');
-      return false;
-    }, false);
-  }
-
   render() {
 
-    const {workspaces} = this.props
+    const {workspaces, onSelection} = this.props
     const {query} = this.state
 
     let shownWorkspaces = function() {
@@ -52,6 +44,12 @@ class Sidebar extends Component {
       return workspacesToShow
     }
 
+    // Handle filter list when user clicks enter*/}
+    $( "#filter" ).submit(function(e) {
+      e.preventDefault();
+      $("li").first().focus().select();
+    });
+
     return (
       <ReactFitText compressor={6}>
         <nav id='sidebar'>
@@ -64,7 +62,7 @@ class Sidebar extends Component {
           <div id="search-results">
             <div id="search-box" className='search-area sidebar-element'>
               <section className="search-box">
-                <form>
+                <form id="filter">
                   <input
                     tabIndex='1'
                     id="textField"
@@ -78,6 +76,7 @@ class Sidebar extends Component {
                       this.props.onSearch(event.target.value)
                       }
                     }
+                    onKeyPress={(e)=>{console.log(e.key)}}
                   >
                   </input>
                 </form>
@@ -95,11 +94,11 @@ class Sidebar extends Component {
                       tabIndex="2"
                       aria-labelledby="textField"
                       onClick={(event) => {
-                        (() => this.props.onSelection(workspace.id))(this.assignSelected(workspace.id))
+                        (() => onSelection(workspace.id))(this.assignSelected(workspace.id))
                         event.target.classList.toggle('selected')
                     }}
                     onKeyPress={(event) => {
-                        (() => this.props.onSelection(workspace.id))(this.assignSelected(workspace.id))
+                        (() => onSelection(workspace.id))(this.assignSelected(workspace.id))
                         event.target.classList.toggle('selected')
                     }}
                     >
