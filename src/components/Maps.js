@@ -5,20 +5,36 @@ export class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mapSize : 13,
-      iconName: 'cl',
+      showingInfoWindow: true,
       activeMarker: {},
       selectedPlace: {},
+      mapSize : 13,
+      mouseEnter: true,
+      iconName: 'cl',
       placeToBounce: [{}],
-      showingInfoWindow: true,
       currentLocationAdress: '', // for foursquare updates
-      markerObjects: []
+      markerObjects: [],
+      currentVenue: null
     };
     this.onMarkerMounted = (element) => {
       this.setState(prevState => ({
         markerObjects: [...prevState.markerObjects, element.marker]
       }))
     };
+  }
+
+  // Map size responsive design purpose
+  componentDidMount() {
+    window.addEventListener('load', this.fitMapSize)
+    window.addEventListener('resize', this.fitMapSize)
+    window.gm_authFailure = this.gm_authFailure
+    window.addEventListener("unhandledrejection", function (event) {
+      console.warn("WARNING: Unhandled promise rejection. Shame on you! Reason: "+ event.reason);
+    });
+
+    document.querySelectorAll('li').forEach( li =>
+      li.addEventListener('click', () => this.setState({selectedPlace: {}, showingInfoWindow: false}))
+    )
   }
 
   onMarkerClick = (props, marker, e) => {
@@ -38,20 +54,28 @@ export class MapContainer extends Component {
         // the included address in the json file will just appear
     });
 
+    this.storeNewData(props, marker, e)
+  };
+
+  storeNewData = (props, marker, e) => {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       placeToBounce: [props],
-      showingInfoWindow: true
+      showingInfoWindow: true,
+      mouseEnter: true
     })
-  };
+    // TODO: handle props here!
+  }
 
   onMapClicked = (props) => {
     this.setState({
       showingInfoWindow: false,
       activeMarker: null,
       placeToBounce: [{}],
+      mouseEnter: true
     })
+    // TODO: handle props ...
   };
 
   componentWillReceiveProps(nextProps) {
@@ -67,15 +91,6 @@ export class MapContainer extends Component {
     })
   }
 
-  // Map size responsive design purpose
-  componentDidMount() {
-    window.addEventListener('resize', this.fitMapSize, false)
-    window.addEventListener('load', this.fitMapSize, false)
-    window.gm_authFailure = this.gm_authFailure
-    window.addEventListener("unhandledrejection", function (event) {
-      console.warn("WARNING: Unhandled promise rejection. Shame on you! Reason: "+ event.reason);
-    });
-  }
 
   fitMapSize = () => {
     let screenSize = window.innerWidth;
@@ -100,13 +115,14 @@ export class MapContainer extends Component {
 
   render() {
     //This style is used for the <Map></Map> inside only
+    const { workspaces, google, currBasicMarkerData} = this.props
+    const { placeToBounce, selectedPlace, showingInfoWindow, activeMarker, mapSize, iconSize} = this.state
     const style = {
       width: '100%',
       height: '100%'
     }
 
-    const { workspaces, google} = this.props
-    const { placeToBounce, selectedPlace, showingInfoWindow, activeMarker, mapSize, iconSize} = this.state
+    const basicMarkerData = currBasicMarkerData
 
     const blueIcon = {
         url: `./images/cl${iconSize}.png`,
@@ -115,6 +131,42 @@ export class MapContainer extends Component {
         url:  `./images/rl${iconSize}.png`,
     };
 
+    const infoWindow =
+    basicMarkerData && basicMarkerData.id !== selectedPlace.id ?
+
+    <InfoWindow marker={activeMarker} visible={showingInfoWindow}>
+        <div className="infoWindow" tabIndex='2'>
+          <h3 className ="info-title" tabIndex='2'>
+            {selectedPlace.name}
+          </h3>
+          <p className= "info-address" tabIndex='2'>
+            <i className="material-icons">location_on</i>{selectedPlace.address}
+          </p>
+          <p className="info-phone" tabIndex='2'>
+            <i className="material-icons">phone</i>{selectedPlace.phone}
+          </p>
+          <img
+            className="info-img"
+            src={selectedPlace.image}
+            tabIndex='2'
+            alt={selectedPlace.name} />
+          <div className="info-link">
+            <a className="info-link"
+              href={selectedPlace.link}
+              tabIndex='2' target="_blank">Visit page
+            </a>
+          </div>
+        </div>
+    </InfoWindow> :
+      // Markers are 'mouseEntered' or clicked
+    <InfoWindow
+      marker={activeMarker}
+      visible={showingInfoWindow}
+      >
+      <div>
+        let's see add what
+      </div>
+    </InfoWindow>
 
     return (
       <Map
@@ -132,8 +184,9 @@ export class MapContainer extends Component {
               ref={this.onMarkerMounted}
               key={location.name}
               onClick={this.onMarkerClick}
-              animation={((placeToBounce[0]['id'] === location.id || selectedPlace.id === location.id) && google.maps.Animation.BOUNCE)}
-              title={'The markers title will appear as a tooltip.'}
+              animation={this.props.currSelectedListId === location.id ? google.maps.Animation.BOUNCE : undefined}
+              onMouseover = { this.state.selectedPlace.id !== location.id ? this.onMouseoverMarker : undefined}
+              title={location.name}
               name={location.name}
               phone={location.phone}
               address={location.address}
@@ -147,21 +200,7 @@ export class MapContainer extends Component {
             />
           ))
         }
-        {/* for UX the same icon included 64 & 32 */}
-        {/* NOTE: the last comment crashes code when included inside the Marker tag*/}
-        <InfoWindow
-          marker={activeMarker}
-          visible={showingInfoWindow}>
-            <div className="infoWindow" tabIndex='2'>
-              <h3 className ="info-title" tabIndex='2'>{selectedPlace.name}</h3>
-              <p className= "info-address" tabIndex='2'><i className="material-icons">location_on</i>{selectedPlace.address}</p>
-              <p className="info-phone" tabIndex='2'><i className="material-icons">phone</i>{selectedPlace.phone}</p>
-              <img className="info-img" src={selectedPlace.image} tabIndex='2' alt={selectedPlace.name} />
-              <div className="info-link">
-                <a className="info-link" href={selectedPlace.link} tabIndex='2' target="_blank">Visit page</a>
-              </div>
-            </div>
-        </InfoWindow>
+        { infoWindow }
       </Map>
     )
   }

@@ -12,7 +12,10 @@ class App extends Component {
     this.state = {
       workspaces: workspaces,
       selectedWorkspace: [{}],
-      workspacesToShow: workspaces
+      workspacesToShow: workspaces,
+      currentMarkerId: null,
+      currentSelectedListId: null,
+      currentBasicMarkerData: null
     }
     this.getMatchQuery = this.getMatchQuery.bind(this)
   }
@@ -34,9 +37,12 @@ class App extends Component {
     this.setState({workspacesToShow: workspacesToShow})
   }
 
-
+  updateSelectedListId = (id) => {
+    const currentBasicMarkerData = this.state.restaurants.find(r => r.id === id)
+    this.setState({currentSelectedListId: id, currentBasicMarkerData: currentBasicMarkerData})
+  }
   render() {
-    const { workspaces, selectedWorkspace, workspacesToShow } = this.state
+    const { workspaces, selectedWorkspace, workspacesToShow, currentSelectedListId, currentBasicMarkerData } = this.state
 
     return (
       <div id="container">
@@ -51,6 +57,10 @@ class App extends Component {
           <Maps
             workspaces = {workspacesToShow}
             selectedWorkspace = {selectedWorkspace}
+            currentSelectedListId={currentSelectedListId}
+            currentBasicMarkerData={currentBasicMarkerData}
+            setCurrMarkerId={this.setCurrMarkerId}
+            updateSelectedListId={this.updateSelectedListId}
           />
         </main>
       </div>

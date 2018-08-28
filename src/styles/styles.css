@@ -257,7 +257,7 @@ h2 {
 
 .info-title {
   font-size: 2.5em;
-  margin-bottom: 0px; }
+  margin-bottom: 0; }
   @media screen and (max-width: 950px) {
     .info-title {
       font-size: 1.5em; } }
@@ -345,3 +345,10 @@ h2 {
   100% {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg); } }
+
+.map {
+  height: 300px; }
+
+@media screen and (min-width: 1024px) {
+  .map {
+    height: 500px; } }
