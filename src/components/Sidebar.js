@@ -10,7 +10,6 @@ class Sidebar extends Component {
     super(props);
     this.state = {
       query: '',
-      selected: ''
     }
   }
 
@@ -24,13 +23,14 @@ class Sidebar extends Component {
     this.setState({query: ''})
   }
 
-  assignSelected = (clicked) => {
-    this.setState({selected: clicked})
+  listItemSelect = (e) => {
+      this.props.updateSelectedId(e.target.id)
+      this.props.setCurrentMarkerId(e.target.id)
   }
 
   render() {
 
-    const {workspaces, onSelection} = this.props
+    const {workspaces} = this.props
     const {query} = this.state
 
     let shownWorkspaces = function() {
@@ -44,7 +44,7 @@ class Sidebar extends Component {
       return workspacesToShow
     }
 
-    // Handle filter list when user clicks enter*/}
+    // Handle filter list when user clicks enter
     $( "#filter" ).submit(function(e) {
       e.preventDefault();
       $("li").first().focus().select();
@@ -86,21 +86,15 @@ class Sidebar extends Component {
               role="menu"
               className='sidebar-element'
             >
-              {
-                shownWorkspaces().map((workspace) => (
+              {shownWorkspaces().map((workspace) => (
                   <Fragment key={workspace.id}>
                     <li
+                      id={workspace.id}
                       role='listitem link'
                       tabIndex="2"
                       aria-labelledby="textField"
-                      onClick={(event) => {
-                        (() => onSelection(workspace.id))(this.assignSelected(workspace.id))
-                        event.target.classList.toggle('selected')
-                    }}
-                    onKeyPress={(event) => {
-                        (() => onSelection(workspace.id))(this.assignSelected(workspace.id))
-                        event.target.classList.toggle('selected')
-                    }}
+                      onClick={this.listItemSelect}
+                      onKeyPress={this.listItemSelect}
                     >
                       {workspace.name}
                     </li>
