@@ -34,6 +34,7 @@ export class MapContainer extends Component {
       );
   }
 
+
   onMarkerClick = (props, marker, e) => {
     let clientID = "2EDBBXP0TYVB5GKNTS4SOXIY4UNKOA0Q2DQAF4ZR2K5LRY03";
     let clientSecret = "QA1ER5FS53NOKMUUKUC4TRO4UXTVA53CBE2VNSKWOFJGH4WH";
@@ -50,7 +51,6 @@ export class MapContainer extends Component {
   };
 
   storeNewData = (props, marker, e) => {
-    console.log(props);
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -135,29 +135,29 @@ export class MapContainer extends Component {
             lng: basicMarkerData.lng
           }}
           visible={!showingInfoWindow}>
-          <div className="infoWindow" tabIndex="2">
-            <h3 className="info-title" tabIndex="2">
+          <div id="ws-name" className="infoWindow" tabIndex="3">
+            <h3 className="info-title" tabIndex="3">
               {basicMarkerData.name}
             </h3>
-            <p className="info-address" tabIndex="2">
+            <p className="info-address" tabIndex="3">
               <i className="material-icons">location_on</i>
               {basicMarkerData.address}
             </p>
-            <p className="info-phone" tabIndex="2">
+            <p className="info-phone" tabIndex="3">
               <i className="material-icons">phone</i>
               {basicMarkerData.phone}
             </p>
             <img
               className="info-img"
               src={basicMarkerData.image}
-              tabIndex="2"
+              tabIndex="3"
               alt={basicMarkerData.name}
             />
             <div className="info-link">
               <a
                 className="info-link"
                 href={basicMarkerData.page}
-                tabIndex="2"
+                tabIndex="3"
                 target="_blank"
               >
                 Visit page
@@ -168,29 +168,29 @@ export class MapContainer extends Component {
       ) : (
         // Markers are 'mouseEntered' or clicked
         <InfoWindow marker={activeMarker} visible={showingInfoWindow}>
-          <div className="infoWindow" tabIndex="2">
-            <h3 className="info-title" tabIndex="2">
+          <div className="infoWindow" tabIndex="3">
+            <h3 className="info-title" tabIndex="3">
               {selectedPlace.name}
             </h3>
-            <p className="info-address" tabIndex="2">
+            <p className="info-address" tabIndex="3">
               <i className="material-icons">location_on</i>
               {selectedPlace.address}
             </p>
-            <p className="info-phone" tabIndex="2">
+            <p className="info-phone" tabIndex="3">
               <i className="material-icons">phone</i>
               {selectedPlace.phone}
             </p>
             <img
               className="info-img"
               src={selectedPlace.image}
-              tabIndex="2"
+              tabIndex="3"
               alt={selectedPlace.name}
             />
             <div className="info-link">
               <a
                 className="info-link"
                 href={selectedPlace.link}
-                tabIndex="2"
+                tabIndex="3"
                 target="_blank"
               >
                 Visit page

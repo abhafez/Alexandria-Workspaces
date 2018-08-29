@@ -10,6 +10,7 @@ class Sidebar extends Component {
     super(props);
     this.state = {
       query: '',
+      clickOutOfMap: false
     }
   }
 

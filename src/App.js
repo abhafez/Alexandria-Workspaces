@@ -12,7 +12,7 @@ class App extends Component {
     workspacesToShow: workspaces,
     currentMarkerId: null,
     currentSelectedListId: null,
-    currentBasicMarkerData: null
+    currentBasicMarkerData: null,
   };
 
   getMatchQuery = query => {
@@ -53,8 +53,8 @@ class App extends Component {
 
     return (
       <div id="container">
-        <a className="skip-link screen-reader-text" href="#content">
-          Skip to content
+        <a className="skip-link screen-reader-text" href="#textField">
+          Skip to search
         </a>
         <TitleBar />
         <Sidebar
