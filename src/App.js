@@ -8,12 +8,12 @@ import escapeRegExp from "escape-string-regexp";
 
 class App extends Component {
   state = {
-      workspaces: workspaces,
-      workspacesToShow: workspaces,
-      currentMarkerId: null,
-      currentSelectedListId: null,
-      currentBasicMarkerData: null
-    };
+    workspaces: workspaces,
+    workspacesToShow: workspaces,
+    currentMarkerId: null,
+    currentSelectedListId: null,
+    currentBasicMarkerData: null
+  };
 
   getMatchQuery = query => {
     let workspacesToShow;
@@ -29,13 +29,15 @@ class App extends Component {
   };
 
   setCurrentMarkerId = id => {
-    this.setState({ currentMarkerId: id });
+    this.setState({ currentMarkerId: Number(id) });
   };
 
   updateSelectedId = id => {
-    const currentBasicMarkerData = this.state.workspaces.find(workspace => workspace.id === id);
+    const currentBasicMarkerData = this.state.workspaces.find(
+      workspace => workspace.id === Number(id)
+    );
     this.setState({
-      currentSelectedListId: id,
+      currentSelectedListId: Number(id),
       currentBasicMarkerData: currentBasicMarkerData
     });
   };
@@ -62,15 +64,18 @@ class App extends Component {
           onSearch={this.getMatchQuery}
           setCurrentMarkerId={this.setCurrentMarkerId}
           updateSelectedId={this.updateSelectedId}
+          clearMap={this.onMapClicked}
         />
         <main role="main" id="map">
           <Maps
             workspaces={workspacesToShow}
+            currentMarkerId={currentMarkerId}
             selectedWorkspace={selectedWorkspace}
             currentSelectedListId={currentSelectedListId}
             currentBasicMarkerData={currentBasicMarkerData}
             setCurrentMarkerId={this.setCurrentMarkerId}
             updateSelectedId={this.updateSelectedId}
+            clearMap={this.onMapClicked}
           />
         </main>
       </div>

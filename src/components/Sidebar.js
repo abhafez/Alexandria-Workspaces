@@ -24,8 +24,8 @@ class Sidebar extends Component {
   }
 
   listItemSelect = (e) => {
-      this.props.updateSelectedId(e.target.id)
-      this.props.setCurrentMarkerId(e.target.id)
+    this.props.updateSelectedId(e.target.id);
+    this.props.setCurrentMarkerId(e.target.id);
   }
 
   render() {
@@ -76,7 +76,6 @@ class Sidebar extends Component {
                       this.props.onSearch(event.target.value)
                       }
                     }
-                    onKeyPress={(e)=>{console.log(e.key)}}
                   >
                   </input>
                 </form>
@@ -85,13 +84,14 @@ class Sidebar extends Component {
             <ul
               role="menu"
               className='sidebar-element'
+              aria-label='List of top workspaces in Alexandria'
             >
               {shownWorkspaces().map((workspace) => (
                   <Fragment key={workspace.id}>
                     <li
                       id={workspace.id}
                       role='listitem link'
-                      tabIndex="2"
+                      tabIndex="1"
                       aria-labelledby="textField"
                       onClick={this.listItemSelect}
                       onKeyPress={this.listItemSelect}
